@@ -1,12 +1,12 @@
-<%= form_with model: @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= render Containers::FocussedComponent.new(title: "Get a free trial for 14 days") do |component| %>
+  <% component.with(:body) do %>
+    <%= render "form", model: @user %>
+  <% end %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Join" %>
+  <% component.with(:footer) do %>
+    <p class="focus__footer-text">
+      Already have an account?
+      <a href="#" class="link link--primary link--weighted">Sign in</a>
+    </p>
+  <% end %>
 <% end %>
