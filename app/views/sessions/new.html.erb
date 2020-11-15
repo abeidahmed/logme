@@ -1,9 +1,12 @@
-<%= form_with url: sessions_url do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Sign in" %>
+<%= render Containers::FocussedComponent.new(title: "Sign in to Applog") do |component| %>
+  <% component.with(:body) do  %>
+    <%= render "form", url: sessions_url %>
+    <hr class="my-4">
+    <section>
+      <p class="font--description">New to Applog?</p>
+      <div class="mt-2">
+        <%= link_to "Create an account", new_user_url, class: "btn btn--outlined btn--block btn--graphik" %>
+      </div>
+    </section>
+  <% end %>
 <% end %>

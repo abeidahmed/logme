@@ -6,7 +6,7 @@
   <% component.with(:footer) do %>
     <p class="focus__footer-text">
       Already have an account?
-      <a href="#" class="link link--primary link--weighted">Sign in</a>
+      <%= link_to "Sign in", new_session_url, class: "link link--primary link--weighted" %>
     </p>
   <% end %>
 <% end %>

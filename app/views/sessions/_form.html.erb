@@ -1,0 +1,25 @@
+<%= form_with url: url,
+  data: {
+    controller: "form",
+    action: "ajax:error->form#onError"
+  },
+  html: { class: "form" } do |f|
+%>
+  <section>
+    <div class="form__group">
+      <%= f.label :email, "Email address", class: "form__label" %>
+      <%= f.email_field :email, class: "input" %>
+    </div>
+
+    <div class="form__group">
+      <%= f.label :password, class: "form__label" %>
+      <%= f.password_field :password, class: "input" %>
+    </div>
+
+    <%= render Forms::ErrorDisplayComponent.new(error_type: "invalid") %>
+  </section>
+
+  <section class="form__btn-group">
+    <%= f.submit "Sign in", class: "btn btn--primary btn--block btn--graphik" %>
+  </section>
+<% end %>
