@@ -1,0 +1,18 @@
+.link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// colors
+.link--primary {
+  color: $blue-600;
+}
+
+.link--dark {
+  color: $gray-700;
+}
+
+.link--weighted {
+  font-weight: 500;
+}
