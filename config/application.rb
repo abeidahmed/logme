@@ -31,5 +31,11 @@ module Logme
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # Don't generate stylesheets
+    config.generators.stylesheets = false
+    # Don't generate helpers
+    config.generators.helper = false
+    # Don't generate helper specs
+    config.generators.helper_specs = false
   end
 end
