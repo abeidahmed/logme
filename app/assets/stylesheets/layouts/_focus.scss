@@ -1,0 +1,31 @@
+.focus {
+  padding: 48px 0;
+}
+
+.focus__header {
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+.focus__logo {
+  margin: 0 auto;
+}
+
+.focus__title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.focus__content {
+  margin-top: 28px;
+}
+
+.focus__footer {
+  margin-top: 12px;
+}
+
+.focus__footer .footer-text {
+  text-align: center;
+  font-size: 14px;
+  color: $gray-700;
+}
