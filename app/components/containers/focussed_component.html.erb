@@ -1,0 +1,16 @@
+<main class="focus main main--washed main--fh">
+  <header class="focus__header">
+    <%= embed_svg "logo-mark", class: "focus__logo" %>
+    <h1 class="font--display focus__title">
+      <%= @title %>
+    </h1>
+  </header>
+  <div class="box box--center box--fw-mobile box--sm focus__content">
+    <%= body %>
+  </div>
+  <% if footer %>
+    <footer class="focus__footer">
+      <%= footer %>
+    </footer>
+  <% end %>
+</main>
