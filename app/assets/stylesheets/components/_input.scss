@@ -1,0 +1,24 @@
+.input {
+  display: block;
+  width: 100%;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid $gray-300;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: $shadow-sm;
+  transition: box-shadow 150ms ease-in-out;
+  font-size: 16px;
+  line-height: 24px;
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+    box-shadow: $shadow-outline;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

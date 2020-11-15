@@ -1,0 +1,29 @@
+.form__group:not(:first-of-type) {
+  margin-top: 12px;
+}
+
+.form__label {
+  display: inline-block;
+  font-weight: 500;
+  color: $gray-700;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.form__btn-group {
+  margin-top: 16px;
+}
+
+.form__tos {
+  margin-top: 16px;
+  font-size: 14px;
+  color: $gray-500;
+}
+
+.form__error {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $red-700;
+}

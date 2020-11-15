@@ -1,0 +1,45 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  position: relative;
+  border-radius: 6px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  box-shadow: $shadow-sm;
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+
+  @include breakpoint(sm) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+// colors
+.btn--primary {
+  color: $gray-200;
+  background-color: $gray-900;
+
+  &:hover {
+    background-color: $gray-800;
+  }
+
+  &:active {
+    background-color: $gray-1000;
+  }
+}
+
+// modifiers
+.btn--block {
+  width: 100%;
+}
+
+.btn.btn--graphik {
+  // nested for specificity issues
+  font-family: $font-family-graphik;
+}
