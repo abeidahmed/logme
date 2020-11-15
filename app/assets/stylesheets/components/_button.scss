@@ -34,6 +34,20 @@
   }
 }
 
+// appearances
+.btn--outlined {
+  border-color: $gray-300;
+  color: $gray-700;
+
+  &:hover {
+    color: $gray-500;
+  }
+
+  &:active {
+    background-color: $gray-100;
+  }
+}
+
 // modifiers
 .btn--block {
   width: 100%;
