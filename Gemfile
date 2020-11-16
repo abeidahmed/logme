@@ -33,6 +33,7 @@ group :development do
   gem "web-console", ">= 3.3.0"
   gem "bullet", "~> 6.1"
   gem "listen", "~> 3.2"
+  gem 'faker', '~> 2.14'
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
