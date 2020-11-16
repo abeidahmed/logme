@@ -1,5 +1,58 @@
 <%= render Containers::AppComponent.new(headquarter: @headquarter) do |component| %>
   <% component.with(:body) do %>
-    <h1>hello world</h1>
+    <div class="container container--sm">
+      <header class="actionable__header">
+        <h2 class="actionable__title">Projects</h2>
+        <hr>
+        <button class="btn btn__pill">
+          <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
+          New
+        </button>
+      </header>
+      <section class="actionable__content">
+        <div class="grid__three_centered">
+          <div>
+            <div
+              data-controller="toggle"
+              data-toggle-class="card__option-container--active"
+              data-action="click@window->toggle#onOutsideClick"
+              class="card card--height"
+            >
+              <header class="card__header">
+                <h4 class="card__title">Tailwind UI</h4>
+                <button data-action="click->toggle#open" class="card__option-btn" aria-label="open option">
+                  <%= embed_svg "dots-horizontal-solid", size: 20 %>
+                </button>
+              </header>
+              <div class="card__content">
+                <p class="card__description">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo, cupiditate!
+                </p>
+              </div>
+              <div data-target="toggle.container" class="card__option-container">
+                <header class="card__header card__option-header">
+                  <h4 class="card__title">
+                    Tailwind UI
+                  </h4>
+                  <button data-action="click->toggle#close" class="card__option-btn" aria-label="close option">
+                    <%= embed_svg "x-solid", size: 20 %>
+                  </button>
+                </header>
+                <div class="card__content">
+                  <a href="#" class="card__option-item">
+                    <%= embed_svg "pencil-solid", size: 20 %>
+                    Edit name, description, etc
+                  </a>
+                  <a href="#" class="card__option-item">
+                    <%= embed_svg "trash-solid", size: 20 %>
+                    Delete project
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   <% end %>
 <% end %>

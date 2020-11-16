@@ -1,0 +1,88 @@
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: $shadow-default;
+  transition: box-shadow 150ms ease-in-out;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__title {
+  color: $gray-900;
+  line-height: 20px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.card__option-btn {
+  padding: 2px;
+  border-radius: 9999px;
+  color: $gray-400;
+  margin-right: -4px;
+
+  &:hover {
+    color: $gray-700;
+  }
+}
+
+.card__content {
+  margin-top: 4px;
+}
+
+.card__description {
+  font-size: 13px;
+  color: $gray-600;
+  line-height: 20px;
+}
+
+.card__option-container {
+  position: absolute;
+  @include inset-full;
+  background-color: #fff;
+  padding: 20px 0;
+  transition: all 150ms ease-in-out;
+  transform: translateX(200%);
+}
+
+.card__option-container--active {
+  transform: translateX(0);
+}
+
+.card__option-header {
+  padding: 0 20px;
+}
+
+.card__option-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  color: $gray-700;
+  padding: 8px 20px;
+  position: relative;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+
+  > svg {
+    color: $gray-500;
+    margin-right: 4px;
+  }
+}
+
+// modifiers
+.card--height {
+  height: 140px;
+}
