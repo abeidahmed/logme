@@ -23,6 +23,8 @@
   line-height: 20px;
   font-weight: 600;
   font-size: 16px;
+  @include truncate;
+  padding-right: 8px;
 }
 
 .card__option-btn {
