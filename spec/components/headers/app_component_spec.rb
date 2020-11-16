@@ -1,6 +1,7 @@
 require "rails_helper"
 
-RSpec.describe Containers::FocussedComponent, type: :component do
+RSpec.describe Headers::AppComponent, type: :component do
+  pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do
   #   expect(

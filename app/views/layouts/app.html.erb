@@ -12,12 +12,6 @@
 
   <body>
     <%= render "flashes/flash" %>
-    <div data-controller="sidebar" class="app">
-      <%= render "app/sidebars/sidebar" %>
-      <div class="app__content">
-        <%= render "app/headers/header" %>
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>

@@ -5,9 +5,9 @@
       <%= embed_svg "arrow-right", size: 24 %>
     </button>
 
-    <a href="#" class="sidebar__link">
+    <%= link_to app_headquarter_projects_url(@headquarter), class: "sidebar__link" do %>
       <%= embed_svg "folder", size: 24 %>
-    </a>
+    <% end %>
 
     <a href="#" class="sidebar__link sidebar__link--active">
       <%= embed_svg "users", size: 24 %>

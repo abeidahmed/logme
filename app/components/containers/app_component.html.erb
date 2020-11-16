@@ -1,0 +1,7 @@
+<div data-controller="sidebar" class="app">
+  <%= render SidebarComponent.new(headquarter: @headquarter) %>
+  <div class="app__content">
+    <%= render Headers::AppComponent.new %>
+    <%= body %>
+  </div>
+</div>
