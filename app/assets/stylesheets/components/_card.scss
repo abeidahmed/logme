@@ -12,6 +12,11 @@
   }
 }
 
+.card__link {
+  position: absolute;
+  @include inset-full;
+}
+
 .card__header {
   display: flex;
   align-items: center;
@@ -32,6 +37,7 @@
   border-radius: 9999px;
   color: $gray-400;
   margin-right: -4px;
+  position: relative;
 
   &:hover {
     color: $gray-700;

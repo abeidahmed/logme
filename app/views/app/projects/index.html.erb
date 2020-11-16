@@ -9,50 +9,55 @@
           New
         </button>
       </header>
+
       <section class="actionable__content">
         <div class="grid__three_centered">
           <% @projects.each do |project| %>
             <div>
-              <%= link_to app_project_url(project) do %>
-                <div
-                  data-controller="toggle"
-                  data-toggle-class="card__option-container--active"
-                  data-action="click@window->toggle#onOutsideClick"
-                  class="card card--height"
-                >
-                  <header class="card__header">
-                    <h4 class="card__title"><%= project.name %></h4>
-                    <button data-action="click->toggle#open" class="card__option-btn" aria-label="open option">
-                      <%= embed_svg "dots-horizontal-solid", size: 20 %>
+              <div
+                data-controller="toggle"
+                data-toggle-class="card__option-container--active"
+                data-action="click@window->toggle#onOutsideClick"
+                class="card card--height"
+              >
+                <%= link_to app_project_url(project), class: "card__link" do; end %>
+                <header class="card__header">
+                  <h4 class="card__title"><%= project.name %></h4>
+                  <button data-action="click->toggle#open" class="card__option-btn" aria-label="open option">
+                    <%= embed_svg "dots-horizontal-solid", size: 20 %>
+                  </button>
+                </header>
+
+                <div class="card__content">
+                  <p class="card__description">
+                    <%= project.description %>
+                  </p>
+                </div>
+
+                <div data-target="toggle.container" class="card__option-container">
+                  <header class="card__header card__option-header">
+                    <h4 class="card__title">
+                      <%= project.name %>
+                    </h4>
+
+                    <button data-action="click->toggle#close" class="card__option-btn" aria-label="close option">
+                      <%= embed_svg "x-solid", size: 20 %>
                     </button>
                   </header>
+
                   <div class="card__content">
-                    <p class="card__description">
-                      <%= project.description %>
-                    </p>
-                  </div>
-                  <div data-target="toggle.container" class="card__option-container">
-                    <header class="card__header card__option-header">
-                      <h4 class="card__title">
-                        <%= project.name %>
-                      </h4>
-                      <button data-action="click->toggle#close" class="card__option-btn" aria-label="close option">
-                        <%= embed_svg "x-solid", size: 20 %>
-                      </button>
-                    </header>
-                    <div class="card__content">
-                      <a href="#" class="card__option-item">
-                        <%= embed_svg "pencil-solid", size: 20 %>
-                        Edit name, description, etc
-                      </a>
-                      <a href="#" class="card__option-item">
-                        <%= embed_svg "trash-solid", size: 20 %>
-                        Delete project
-                      </a>
-                    </div>
+                    <a href="#" class="card__option-item">
+                      <%= embed_svg "pencil-solid", size: 20 %>
+                      Edit name, description, etc
+                    </a>
+
+                    <a href="#" class="card__option-item">
+                      <%= embed_svg "trash-solid", size: 20 %>
+                      Delete project
+                    </a>
                   </div>
                 </div>
-              <% end %>
+              </div>
             </div>
           <% end %>
         </div>
