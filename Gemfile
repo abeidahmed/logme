@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem "view_component", require: "view_component/engine"
+gem "pundit", "~> 2.1"
 # gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
 
@@ -21,6 +22,7 @@ group :development, :test do
   gem "rspec-rails", "~> 4.0", ">= 4.0.1"
   gem "shoulda-matchers", "~> 4.4", ">= 4.4.1"
   gem "factory_bot_rails", "~> 6.1"
+  gem "pundit-matchers", "~> 1.6"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
