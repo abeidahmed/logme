@@ -62,6 +62,9 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
   watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
 
+  # Policy specs
+  watch(%r{^app/policies/(.+)_(policy)\.rb$}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
