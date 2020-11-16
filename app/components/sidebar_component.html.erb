@@ -18,32 +18,30 @@
     </a>
   </div>
 
-  <div class="sidebar__extended">
-    <div data-target="sidebar.sidebarExtended" class="sidebar__extended__container">
-      <header class="sidebar__extended__header">
-        <h3 class="sidebar__extended__title">HQs you're part of</h3>
-        <button class="sidebar__extended__btn">
-          <%= embed_svg "plus", size: 24 %>
+  <div data-target="sidebar.sidebarExtended" class="sidebar__extended">
+    <header class="sidebar__extended__header">
+      <h3 class="sidebar__extended__title">HQs you're part of</h3>
+      <button class="sidebar__extended__btn">
+        <%= embed_svg "plus", size: 24 %>
+      </button>
+
+      <div class="sidebar__extended__xbtn_container">
+        <button data-action="click->sidebar#close">
+          <%= embed_svg "x", size: 24 %>
         </button>
-
-        <div class="sidebar__extended__xbtn_container">
-          <button data-action="click->sidebar#close">
-            <%= embed_svg "x", size: 24 %>
-          </button>
-        </div>
-      </header>
-
-      <div class="sidebar__extended__content">
-        <a href="#" class="sidebar__extended__link sidebar__extended__link--active">
-          <%= embed_svg "tw-logo", size: 32 %>
-          <span>Stylish vscode</span>
-        </a>
-
-        <a href="#" class="sidebar__extended__link">
-          <%= embed_svg "twui-logo", size: 32 %>
-          <span>Applog space</span>
-        </a>
       </div>
+    </header>
+
+    <div class="sidebar__extended__content">
+      <a href="#" class="sidebar__extended__link sidebar__extended__link--active">
+        <%= embed_svg "tw-logo", size: 32 %>
+        <span>Stylish vscode</span>
+      </a>
+
+      <a href="#" class="sidebar__extended__link">
+        <%= embed_svg "twui-logo", size: 32 %>
+        <span>Applog space</span>
+      </a>
     </div>
   </div>
 </aside>

@@ -54,11 +54,8 @@
 .sidebar__extended {
   flex-shrink: 0;
   width: 100%;
-}
-
-.sidebar__extended__container {
   flex: 1 1 0%;
-  max-width: 320px;
+  width: 256px;
   height: 100vh;
   padding: 32px 24px;
   background-color: $gray-800;
