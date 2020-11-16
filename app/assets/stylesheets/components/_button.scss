@@ -34,6 +34,10 @@
   &:hover {
     background-color: $gray-100;
   }
+
+  &:active {
+    background-color: $gray-200;
+  }
 }
 
 .btn__pill__icon {
