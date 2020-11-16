@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     if (this.isPreview) {
-      this.hide();
+      this.close();
     }
   }
 
