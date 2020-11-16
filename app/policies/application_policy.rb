@@ -52,6 +52,6 @@ class ApplicationPolicy
   end
 
   def good_headquarter_member?(object: record)
-    user.has_membership_of_headquarter?(record) && user.headquarter_invite_accepted?(record)
+    user.has_headquarter_membership?(record) && user.headquarter_invite_accepted?(record)
   end
 end

@@ -1,4 +1,9 @@
 class App::ProjectsController < App::ApplicationController
+  def index
+    headquarter = Headquarter.find(params[:headquarter_id])
+    @projects = policy_scope headquarter, policy_scope_class: ProjectPolicy::Scope
+  end
+
   def create
     headquarter = Headquarter.find(params[:headquarter_id])
     authorize headquarter, policy_class: ProjectPolicy
