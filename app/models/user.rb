@@ -17,6 +17,26 @@ class User < ApplicationRecord
   validates_format_of :email, with: VALID_EMAIL_REGEX
   validates_length_of :password, minimum: 6, allow_blank: true
 
+  def headquarter_owner?(headquarter)
+    find_headquarter_membership(headquarter).owner?
+  end
+
+  def headquarter_invite_accepted?(headquarter)
+    find_headquarter_membership(headquarter).invitation_accepted?
+  end
+
+  def headquarter_invite_pending?(headquarter)
+    !find_headquarter_membership(headquarter).invitation_accepted?
+  end
+
+  def has_membership_of_headquarter?(headquarter)
+    hq_memberships.exists?(headquarter_id: headquarter.id)
+  end
+
+  def find_headquarter_membership(headquarter)
+    hq_memberships.find_by(headquarter_id: headquarter.id)
+  end
+
   private
   def generate_auth_token
     generate_token(:auth_token)
