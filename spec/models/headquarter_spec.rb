@@ -5,6 +5,8 @@ RSpec.describe Headquarter, type: :model do
     it { should have_many(:users) }
 
     it { should have_many(:hq_memberships) }
+
+    it { should have_many(:projects) }
   end
 
   describe "validations" do
