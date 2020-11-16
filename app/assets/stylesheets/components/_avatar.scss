@@ -1,0 +1,19 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 32px;
+  width: 32px;
+}
+
+.avatar--rounded {
+  border-radius: 9999px;
+}
+
+.avatar__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
