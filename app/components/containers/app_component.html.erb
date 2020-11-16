@@ -1,5 +1,5 @@
 <div data-controller="sidebar" class="app">
-  <%= render SidebarComponent.new(headquarter: @headquarter) %>
+  <%= render SidebarComponent.new(headquarter: @headquarter, user: @user) %>
   <div class="app__content">
     <%= render Headers::AppComponent.new %>
     <main class="app__main">

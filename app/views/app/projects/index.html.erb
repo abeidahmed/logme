@@ -1,4 +1,4 @@
-<%= render Containers::AppComponent.new(headquarter: @headquarter) do |component| %>
+<%= render Containers::AppComponent.new(headquarter: @headquarter, user: current_user) do |component| %>
   <% component.with(:body) do %>
     <div class="container container--sm">
       <header class="actionable__header">

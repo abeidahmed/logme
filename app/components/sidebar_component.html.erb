@@ -33,15 +33,12 @@
     </header>
 
     <div class="sidebar__extended__content">
-      <a href="#" class="sidebar__extended__link sidebar__extended__link--active">
-        <%= embed_svg "tw-logo", size: 32 %>
-        <span>Stylish vscode</span>
-      </a>
-
-      <a href="#" class="sidebar__extended__link">
-        <%= embed_svg "twui-logo", size: 32 %>
-        <span>Applog space</span>
-      </a>
+      <% headquarters.each do |headquarter| %>
+        <%= link_to app_headquarter_projects_url(headquarter), class: "sidebar__extended__link" do %>
+          <%= embed_svg "tw-logo", size: 32 %>
+          <span><%= headquarter.name %></span>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </aside>
