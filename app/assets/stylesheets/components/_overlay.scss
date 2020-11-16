@@ -1,0 +1,15 @@
+.overlay {
+  position: fixed;
+  @include inset-full;
+
+  > div {
+    position: absolute;
+    @include inset-full;
+    background-color: $gray-500;
+    opacity: 0.5;
+  }
+}
+
+.overlay--hidden {
+  display: none;
+}
