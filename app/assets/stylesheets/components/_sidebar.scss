@@ -5,6 +5,7 @@
   position: absolute;
   transition: all 150ms ease-in-out;
   transform: translateX(-200%);
+  z-index: z(sidebar);
 
   @include breakpoint(lg) {
     position: static;

@@ -1,6 +1,7 @@
 .overlay {
   position: fixed;
   @include inset-full;
+  z-index: z(overlay);
 
   > div {
     position: absolute;
