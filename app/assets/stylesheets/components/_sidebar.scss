@@ -23,7 +23,7 @@
   flex-direction: column;
   border-right: 1px solid $gray-200;
   background-color: #fff;
-  z-index: 100;
+  z-index: z(sidebar-nav);
 }
 
 .sidebar__link {
