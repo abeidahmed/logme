@@ -7,3 +7,19 @@
   display: flex;
   flex-direction: column;
 }
+
+.app__main {
+  background-color: $gray-100;
+  height: calc(100vh - #{$app-header-height});
+  padding: 28px 16px;
+
+  @include breakpoint(sm) {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  @include breakpoint(lg) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}

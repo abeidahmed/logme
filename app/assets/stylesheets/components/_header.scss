@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid $gray-200;
-  height: 56px;
+  height: $app-header-height;
 }
 
 .app__header__toggle-btn {

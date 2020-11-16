@@ -2,6 +2,8 @@
   <%= render SidebarComponent.new(headquarter: @headquarter) %>
   <div class="app__content">
     <%= render Headers::AppComponent.new %>
-    <%= body %>
+    <main class="app__main">
+      <%= body %>
+    </main>
   </div>
 </div>
