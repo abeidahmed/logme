@@ -1,0 +1,14 @@
+<div
+  data-controller="animation"
+  data-target="animation.container"
+  data-action="click->animation#hide"
+  data-animation-entering="toast--entering"
+  data-animation-entered="toast--entered"
+  data-animation-leaving="toast--leaving"
+  class="toast toast--<%= @type %>"
+>
+  <div class="toast__content">
+    <%= embed_svg toast_icon, size: 20, class: "toast__icon" %>
+    <p><%= @msg %></p>
+  </div>
+</div>
