@@ -5,6 +5,10 @@ RSpec.describe Project, type: :model do
 
   describe "associations" do
     it { should belong_to(:headquarter) }
+
+    it { should have_many(:users) }
+
+    it { should have_many(:project_memberships) }
   end
 
   describe "validations" do

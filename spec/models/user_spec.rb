@@ -7,6 +7,10 @@ RSpec.describe User, type: :model do
     it { should have_many(:headquarters) }
 
     it { should have_many(:hq_memberships) }
+
+    it { should have_many(:projects) }
+
+    it { should have_many(:project_memberships) }
   end
 
   describe "validations" do

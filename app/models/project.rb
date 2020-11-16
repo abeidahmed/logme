@@ -1,5 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :headquarter
+  has_many :project_memberships
+  has_many :users, through: :project_memberships
 
   before_save :normalize_url
   before_save :normalize_subdomain
