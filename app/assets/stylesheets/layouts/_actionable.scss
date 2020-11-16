@@ -1,0 +1,20 @@
+.actionable__header {
+  display: flex;
+  align-items: center;
+
+  > hr {
+    flex: 1 1 0%;
+  }
+}
+
+.actionable__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: $gray-700;
+  line-height: 28px;
+  padding-right: 16px;
+}
+
+.actionable__content {
+  margin-top: 24px;
+}
