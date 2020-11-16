@@ -1,5 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Headquarter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it { should validate_presence_of(:name) }
+
+    it { should validate_length_of(:name).is_at_most(255) }
+
+    it { should validate_length_of(:description).is_at_most(500) }
+  end
 end
