@@ -1,5 +1,6 @@
 $z-index: (
   sidebar-nav: 100,
+  toast: 110,
 );
 
 @function z($name, $z: $z-index) {
