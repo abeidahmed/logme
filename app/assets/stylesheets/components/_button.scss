@@ -20,6 +20,33 @@
   }
 }
 
+.btn__pill {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border-color: $gray-300;
+  line-height: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #fff;
+  height: 28px;
+  color: $gray-700;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+}
+
+.btn__pill__icon {
+  height: 20px;
+  width: 20px;
+  color: $pink-600;
+}
+
+.btn__pill__icon--left {
+  margin-left: -2px;
+  margin-right: 2px;
+}
+
 // colors
 .btn--primary {
   color: $gray-200;
