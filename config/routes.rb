@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :headquarters, only: %i(create) do
       resources :projects, only: %i(index create)
     end
+
+    resources :projects, only: %i(show)
   end
 end

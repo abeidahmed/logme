@@ -18,6 +18,11 @@ class App::ProjectsController < App::ApplicationController
     end
   end
 
+  def show
+    @project = Project.find(params[:id])
+    authorize @project
+  end
+
   private
   def project_params
     params.require(:project).permit(:name, :url, :subdomain, :description)

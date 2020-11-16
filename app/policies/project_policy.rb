@@ -3,6 +3,10 @@ class ProjectPolicy < ApplicationPolicy
     good_headquarter_member?
   end
 
+  def show?
+    user.has_project_membership?(record) || good_owner?(object: record.headquarter)
+  end
+
   class Scope < Scope
     def resolve
       if good_owner?
