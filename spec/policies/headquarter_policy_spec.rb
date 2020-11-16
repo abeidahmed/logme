@@ -11,4 +11,24 @@ RSpec.describe HeadquarterPolicy, type: :policy do
   context "being a logged in user only" do
     it { is_expected.to permit_actions(%i(create)) }
   end
+
+  context "being an owner" do
+    let(:headquarter) { create(:headquarter) }
+    before do
+      team = HeadquarterTeamAdder.new(headquarter: headquarter, user: user, role: "owner")
+      team.save
+    end
+
+    it { is_expected.to permit_actions(%i(show)) }
+  end
+
+  context "being a member" do
+    let(:headquarter) { create(:headquarter) }
+    before do
+      team = HeadquarterTeamAdder.new(headquarter: headquarter, user: user)
+      team.save
+    end
+
+    it { is_expected.to permit_actions(%i(show)) }
+  end
 end

@@ -29,7 +29,7 @@ class User < ApplicationRecord
     !find_headquarter_membership(headquarter).invitation_accepted?
   end
 
-  def has_membership_of_headquarter?(headquarter)
+  def has_headquarter_membership?(headquarter)
     hq_memberships.exists?(headquarter_id: headquarter.id)
   end
 
