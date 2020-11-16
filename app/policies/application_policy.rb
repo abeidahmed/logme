@@ -51,7 +51,11 @@ class ApplicationPolicy
     end
   end
 
+  def good_owner?(object: record)
+    good_headquarter_member?(object: object) && user.headquarter_owner?(object)
+  end
+
   def good_headquarter_member?(object: record)
-    user.has_headquarter_membership?(record) && user.headquarter_invite_accepted?(record)
+    user.has_headquarter_membership?(object) && user.headquarter_invite_accepted?(object)
   end
 end
