@@ -1,4 +1,7 @@
 class Headquarter < ApplicationRecord
+  has_many :hq_memberships
+  has_many :users, through: :hq_memberships
+
   validates_presence_of :name
   validates_length_of :name, maximum: 255
   validates_length_of :description, maximum: 500

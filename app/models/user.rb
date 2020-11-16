@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :hq_memberships
+  has_many :headquarters, through: :hq_memberships
+
   has_secure_password
 
   before_create :generate_auth_token

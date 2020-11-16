@@ -3,6 +3,12 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   subject { build(:user) }
 
+  describe "associations" do
+    it { should have_many(:headquarters) }
+
+    it { should have_many(:hq_memberships) }
+  end
+
   describe "validations" do
     it { should have_secure_password }
 
