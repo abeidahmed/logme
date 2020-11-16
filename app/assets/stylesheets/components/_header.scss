@@ -1,0 +1,29 @@
+.app__header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $gray-200;
+  height: 56px;
+}
+
+.app__header__toggle-btn {
+  padding: 16px 14px;
+  color: $gray-500;
+  border-right: 1px solid $gray-200;
+
+  &:hover {
+    background-color: $gray-100;
+    color: $gray-800;
+  }
+
+  @include breakpoint(lg) {
+    display: none;
+  }
+}
+
+.app__header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 0%;
+  padding: 0 16px 0 12px;
+}

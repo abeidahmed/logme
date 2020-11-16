@@ -1,0 +1,49 @@
+<div data-target="sidebar.overlay" class="overlay overlay--hidden"><div></div></div>
+<aside data-target="sidebar.sidebar" class="sidebar">
+  <div class="sidebar__nav">
+    <button data-action="click->sidebar#toggleExtended" class="sidebar__link sidebar__link--toggle">
+      <%= embed_svg "arrow-right", size: 24 %>
+    </button>
+
+    <a href="#" class="sidebar__link">
+      <%= embed_svg "folder", size: 24 %>
+    </a>
+
+    <a href="#" class="sidebar__link sidebar__link--active">
+      <%= embed_svg "users", size: 24 %>
+    </a>
+
+    <a href="#" class="sidebar__link">
+      <%= embed_svg "cog", size: 24 %>
+    </a>
+  </div>
+
+  <div class="sidebar__extended">
+    <div data-target="sidebar.sidebarExtended" class="sidebar__extended__container">
+      <header class="sidebar__extended__header">
+        <h3 class="sidebar__extended__title">HQs you're part of</h3>
+        <button class="sidebar__extended__btn">
+          <%= embed_svg "plus", size: 24 %>
+        </button>
+
+        <div class="sidebar__extended__xbtn_container">
+          <button data-action="click->sidebar#close">
+            <%= embed_svg "x", size: 24 %>
+          </button>
+        </div>
+      </header>
+
+      <div class="sidebar__extended__content">
+        <a href="#" class="sidebar__extended__link sidebar__extended__link--active">
+          <%= embed_svg "tw-logo", size: 36 %>
+          <span>Tailwind labs</span>
+        </a>
+
+        <a href="#" class="sidebar__extended__link">
+          <%= embed_svg "twui-logo", size: 36 %>
+          <span>Applog space</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
