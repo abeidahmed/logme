@@ -148,6 +148,7 @@ button,
 input[type='submit'] {
   cursor: pointer;
   font-family: $font-family-arial;
+  transition: all 150ms ease-in-out;
 
   &:focus:not([data-focus-visible-added]) {
     outline: none;
