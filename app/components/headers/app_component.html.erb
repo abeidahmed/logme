@@ -6,8 +6,18 @@
     <div>
       Applog space
     </div>
-    <div class="avatar__container">
-      <img class="avatar avatar--rounded" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-    </div>
+    <%= render DropdownComponent.new do |component| %>
+      <% component.with(:toggler) do %>
+        <button data-action="click->toggle#toggle" class="avatar__container">
+          <img class="avatar avatar--rounded" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        </button>
+      <% end %>
+      <% component.with(:items) do %>
+        <a href="#" class="dropdown__item">Your profile</a>
+        <a href="#" class="dropdown__item">Settings</a>
+        <hr>
+        <%= link_to "Sign out", session_url("curr"), method: :delete, class: "dropdown__item" %>
+      <% end %>
+    <% end %>
   </div>
 </header>

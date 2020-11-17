@@ -1,0 +1,13 @@
+<div
+  data-controller="toggle"
+  data-action="click@window->toggle#onOutsideClick"
+  data-toggle-class="dropdown__container--active"
+  class="dropdown"
+>
+  <%= toggler %>
+  <div data-target="toggle.container" class="dropdown__container">
+    <div class="dropdown__inner">
+      <%= items %>
+    </div>
+  </div>
+</div>

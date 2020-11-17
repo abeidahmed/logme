@@ -8,9 +8,15 @@ class SessionsController < ApplicationController
 
     if auth.authenticated?
       login(auth.user)
-      redirect_to root_url, success: "Signed in successfully"
+      redirect_to root_url, success: "Successfully signed in"
     else
       render json: { errors: { invalid: ["credentials"] } }, status: :bad_request
     end
+  end
+
+  def destroy
+    cookies.delete(:auth_token) if user_signed_in?
+    @current_user = nil
+    redirect_to new_session_url, success: "Successfully logged out"
   end
 end

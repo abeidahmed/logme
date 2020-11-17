@@ -7,6 +7,6 @@ class App::ApplicationController < ApplicationController
 
   private
   def authenticate_user
-    redirect_to root_url, alert: "Please signup or login to continue" unless user_signed_in?
+    redirect_to new_session_url, alert: "Please signup or login to continue" unless user_signed_in?
   end
 end

@@ -26,4 +26,18 @@ RSpec.describe "Sessions", type: :request do
       include_examples "bad_request"
     end
   end
+
+  describe "#destroy" do
+    context "when the user is signed in" do
+      let(:user) { create(:user) }
+      before do
+        login(user)
+        delete session_url("hello")
+      end
+
+      it "should logout the user" do
+        expect(cookies[:auth_token]).to be_blank
+      end
+    end
+  end
 end
