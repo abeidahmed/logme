@@ -12,6 +12,11 @@ class App::HeadquartersController < App::ApplicationController
     end
   end
 
+  def show
+    @headquarter = Headquarter.find(params[:id])
+    authorize @headquarter
+  end
+
   private
   def headquarter_params
     params.require(:headquarter).permit(:name, :description)

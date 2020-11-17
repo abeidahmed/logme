@@ -1,0 +1,39 @@
+<div class="container container--sm">
+  <div class="actionable">
+    <div class="actionable__top">
+      <%= render Headers::ActionableComponent.new(title: "#{@headquarter.name} HQ") %>
+      <div class="actionable__content">
+        <div class="grid__three_centered">
+          <%= render Cards::DumbComponent.new(
+              url: app_headquarter_projects_url(@headquarter),
+              title: "Projects",
+              description: "Lorem ipsum dolor sit amet.",
+              type: "project"
+            )
+          %>
+          <%= render Cards::DumbComponent.new(
+              url: app_headquarter_hq_memberships_url(@headquarter),
+              title: "HQ members",
+              description: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
+              type: "team"
+            )
+          %>
+          <%= render Cards::DumbComponent.new(
+              url: "#",
+              title: "HQ settings",
+              description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+              type: "setting"
+            )
+          %>
+        </div>
+      </div>
+    </div>
+    <div class="actionable__bottom">
+      <footer class="actionable__footer">
+        <hr class="mb-6">
+        <h1 class="font--description font-semibold">Welcome to <%= @headquarter.name %> HQ</h1>
+        <p class="font--support">Good vibes since <%= format_date(@headquarter.created_at, long: true) %></p>
+      </footer>
+    </div>
+  </div>
+</div>

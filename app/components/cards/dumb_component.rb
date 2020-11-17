@@ -16,6 +16,8 @@ class Cards::DumbComponent < ApplicationComponent
       "cog"
     when "tag"
       "tag"
+    when "project"
+      "folder"
     else
       raise "Unhandled type: #{@type}"
     end
@@ -31,6 +33,8 @@ class Cards::DumbComponent < ApplicationComponent
       "#7E3AF2"
     when "tag"
       "#16BDCA"
+    when "project"
+      "#06B6D4"
     else
       raise "Unhandled type: #{@type}"
     end
