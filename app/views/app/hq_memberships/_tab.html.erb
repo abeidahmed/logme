@@ -1,0 +1,21 @@
+<%= render TabComponent.new(
+    links: [
+      {
+        name: "All",
+        url: app_headquarter_hq_memberships_url(@headquarter.id)
+      },
+      {
+        name: "Owners",
+        url: request.query_parameters.merge({ role: "owner" })
+      },
+      {
+        name: "Members",
+        url: request.query_parameters.merge({ role: "member" })
+      },
+      {
+        name: "Pending",
+        url: request.query_parameters.merge({ role: "pending" })
+      }
+    ]
+  )
+%>

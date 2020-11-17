@@ -10,17 +10,12 @@
         <% end %>
       <% end %>
       <div class="actionable__content">
-        <nav class="tab">
-          <button class="tab__item tab__item--active">All</button>
-          <button class="tab__item">Owners</button>
-          <button class="tab__item">Members</button>
-          <button class="tab__item">Pending</button>
-        </nav>
-      </div>
-      <div class="grid__three_centered mt-4">
-        <% @hq_memberships.each do |member| %>
-          <%= render "member_card", member: member %>
-        <% end %>
+        <%= render "tab" %>
+        <div class="grid__three_centered mt-4">
+          <% @hq_memberships.each do |member| %>
+            <%= render "member_card", member: member %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

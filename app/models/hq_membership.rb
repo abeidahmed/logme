@@ -1,6 +1,11 @@
 class HqMembership < ApplicationRecord
+  include Filterable
+
   belongs_to :user
   belongs_to :headquarter
+
+  scope :pending_members, -> { where(invitation_accepted: false) }
+  scope :members_with_role, ->(role) { where(role: role) }
 
   enum role: { member: "member", owner: "owner" }
 
