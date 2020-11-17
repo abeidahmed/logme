@@ -55,6 +55,10 @@
 
 .card__content {
   margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 75%;
 }
 
 .card__description {

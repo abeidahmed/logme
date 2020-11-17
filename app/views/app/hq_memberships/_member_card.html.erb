@@ -13,6 +13,11 @@
         Good vibes since <%= format_date(member.join_date) %>
       </p>
     </div>
+    <% unless member.invitation_accepted? %>
+      <div class="ml-auto">
+        <%= render BadgeComponent.new(title: "Pending", label: "Invite pending", type: "warning") %>
+      </div>
+    <% end %>
   <% end %>
   <% component.with(:actions) do %>
     <a href="#" class="card__option-item">
