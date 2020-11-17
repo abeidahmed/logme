@@ -26,6 +26,12 @@
   }
 }
 
+.dropdown__toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .dropdown__item {
   display: block;
   padding: 8px 12px;
@@ -47,4 +53,12 @@
 // modifiers
 .dropdown__container--active {
   display: block;
+}
+
+.dropdown__container--left {
+  left: 0;
+}
+
+.dropdown__container--xl {
+  width: 16rem;
 }

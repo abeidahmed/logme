@@ -1,0 +1,36 @@
+<%= render DropdownComponent.new(position: "left", size: "xl") do |component| %>
+  <% component.with(:toggler) do %>
+    <div class="dropdown__toggler">
+      <button data-action="click->toggle#toggle" class="app__header__toggle-btn">
+        <%= embed_svg "dots-menu", size: 24 %>
+      </button>
+    </div>
+  <% end %>
+  <% component.with(:items) do %>
+    <div class="p-5">
+      <div class="hq__header">
+        <h3 class="font--title">
+          HQs you're part of
+        </h3>
+        <button class="btn__icon btn__icon--right">
+          <%= embed_svg "plus", size: 24 %>
+        </button>
+      </div>
+      <ul class="hq__list">
+        <% headquarters.each do |headquarter| %>
+          <% if current_user.headquarter_invite_accepted?(headquarter) %>
+            <%= link_to app_headquarters_url(headquarter), class: "hq__list__item" do %>
+              <%= embed_svg "check", size: 20, class: "hq__list__icon hq__list__icon--success" %>
+              <%= headquarter.name %>
+            <% end %>
+          <% else %>
+            <%= link_to app_headquarters_url(headquarter), class: "hq__list__item" do %>
+              <%= embed_svg "exclamation", size: 20, class: "hq__list__icon hq__list__icon--warning" %>
+              <%= headquarter.name %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

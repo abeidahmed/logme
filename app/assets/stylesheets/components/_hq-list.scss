@@ -1,0 +1,36 @@
+.hq__header {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.hq__list {
+  margin-top: 12px;
+
+  > * + * {
+    margin-top: 8px;
+  }
+}
+
+.hq__list__item {
+  display: flex;
+  align-items: center;
+  color: $gray-700;
+  font-size: 14px;
+
+  &:hover {
+    color: $gray-500;
+  }
+}
+
+.hq__list__icon {
+  margin-right: 6px;
+}
+
+.hq__list__icon--success {
+  color: $green-400;
+}
+
+.hq__list__icon--warning {
+  color: $yellow-400;
+}

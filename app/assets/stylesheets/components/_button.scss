@@ -51,6 +51,23 @@
   margin-right: 2px;
 }
 
+.btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 9999px;
+  color: $gray-500;
+
+  &:hover {
+    color: $gray-700;
+  }
+}
+
+.btn__icon--right {
+  margin-right: -4px;
+}
+
 // colors
 .btn--primary {
   color: $gray-200;

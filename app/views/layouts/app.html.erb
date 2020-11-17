@@ -12,6 +12,11 @@
 
   <body>
     <%= render "flashes/flash" %>
-    <%= yield %>
+    <div class="app">
+      <%= render Headers::AppComponent.new(user: current_user) %>
+      <main class="app__main">
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

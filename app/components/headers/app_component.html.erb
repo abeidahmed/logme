@@ -1,11 +1,6 @@
 <header class="app__header">
-  <button data-action="click->sidebar#open" class="app__header__toggle-btn">
-    <%= embed_svg "menu", size: 24 %>
-  </button>
   <div class="app__header__content">
-    <div>
-      Applog space
-    </div>
+    <%= render Headquarters::ListComponent.new(user: @user) %>
     <%= render DropdownComponent.new do |component| %>
       <% component.with(:toggler) do %>
         <button data-action="click->toggle#toggle" class="avatar__container">
