@@ -50,7 +50,7 @@
       <footer class="actionable__footer">
         <hr class="mb-6">
         <h1 class="font--description font-semibold">Welcome to <%= @project.name %></h1>
-        <p class="font--support">Good vibes since <%= @project.created_at %></p>
+        <p class="font--support">Good vibes since <%= format_date(@project.created_at, long: true) %></p>
         <p class="font--description">
           Changelogs at:
           <a href="#" class="link link--primary link--weighted">
