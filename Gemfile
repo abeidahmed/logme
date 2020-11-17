@@ -23,6 +23,7 @@ group :development, :test do
   gem "shoulda-matchers", "~> 4.4", ">= 4.4.1"
   gem "factory_bot_rails", "~> 6.1"
   gem "pundit-matchers", "~> 1.6"
+  gem 'simplecov', '~> 0.19.1', require: false
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
