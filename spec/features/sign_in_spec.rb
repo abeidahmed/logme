@@ -6,7 +6,7 @@ RSpec.feature "Signins", type: :feature do
       sign_in
 
       expect(current_url).to eq(root_url)
-      expect(page).to have_content("Signed in")
+      expect(page).to have_content("signed in")
     end
   end
 
