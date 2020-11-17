@@ -3,6 +3,10 @@ class HeadquarterPolicy < ApplicationPolicy
     user
   end
 
+  def show?
+    user.has_headquarter_membership?(record)
+  end
+
   class Scope < Scope
     def resolve
       scope.includes(:hq_memberships).where(hq_memberships: { user_id: user.id })
