@@ -1,59 +1,59 @@
 <div class="container container--sm">
-  <%= render Headers::ActionableComponent.new(title: @project.name) do |component| %>
-    <% component.with(:actioner) do %>
-      <button class="btn btn__pill">
-        <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
-        New changelog
-      </button>
-    <% end %>
-  <% end %>
-
-  <div class="actionable__content">
-    <div class="grid__three_centered">
-      <%= render Cards::DumbComponent.new(
-          url: "#",
-          title: "Changelogs",
-          description: "Lorem ipsum dolor sit amet.",
-          type: "changelog"
-        )
-      %>
-
-      <%= render Cards::DumbComponent.new(
-          url: "#",
-          title: "Team members",
-          description: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
-          type: "team"
-        )
-      %>
-
-      <%= render Cards::DumbComponent.new(
-          url: "#",
-          title: "Settings",
-          description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-          type: "setting"
-        )
-      %>
-
-      <%= render Cards::DumbComponent.new(
-          url: "#",
-          title: "Tags",
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, qui.",
-          type: "tag"
-        )
-      %>
-
+  <div class="actionable">
+    <div class="actionable__top">
+      <%= render Headers::ActionableComponent.new(title: @project.name) do |component| %>
+        <% component.with(:actioner) do %>
+          <button class="btn btn__pill">
+            <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
+            New changelog
+          </button>
+        <% end %>
+      <% end %>
+      <div class="actionable__content">
+        <div class="grid__three_centered">
+          <%= render Cards::DumbComponent.new(
+              url: "#",
+              title: "Changelogs",
+              description: "Lorem ipsum dolor sit amet.",
+              type: "changelog"
+            )
+          %>
+          <%= render Cards::DumbComponent.new(
+              url: "#",
+              title: "Team members",
+              description: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
+              type: "team"
+            )
+          %>
+          <%= render Cards::DumbComponent.new(
+              url: "#",
+              title: "Settings",
+              description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+              type: "setting"
+            )
+          %>
+          <%= render Cards::DumbComponent.new(
+              url: "#",
+              title: "Tags",
+              description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, qui.",
+              type: "tag"
+            )
+          %>
+        </div>
+      </div>
+    </div>
+    <div class="actionable__bottom">
+      <footer class="actionable__footer">
+        <hr class="mb-6">
+        <h1 class="font--description font-semibold">Welcome to <%= @project.name %></h1>
+        <p class="font--support">Good vibes since <%= format_date(@project.created_at, long: true) %></p>
+        <p class="font--description">
+          Changelogs at:
+          <a href="#" class="link link--primary link--weighted">
+            <%= @project.subdomain %>.applog.space
+          </a>
+        </p>
+      </footer>
     </div>
   </div>
-
-  <footer class="actionable__footer">
-    <hr class="mb-6">
-    <h1 class="font--description font-semibold">Welcome to <%= @project.name %></h1>
-    <p class="font--support">Good vibes since <%= format_date(@project.created_at, long: true) %></p>
-    <p class="font--description">
-      Changelogs at:
-      <a href="#" class="link link--primary link--weighted">
-        <%= @project.subdomain %>.applog.space
-      </a>
-    </p>
-  </footer>
 </div>

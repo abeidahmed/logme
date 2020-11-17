@@ -8,7 +8,7 @@
 .app__main {
   background-color: $gray-100;
   height: calc(100vh - #{$app-header-height});
-  padding: 28px 16px;
+  padding: $app-main-padding-y 16px;
   overflow-y: auto;
 
   @include breakpoint(sm) {
