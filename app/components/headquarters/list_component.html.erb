@@ -19,12 +19,12 @@
       <ul class="hq__list">
         <% headquarters.each do |headquarter| %>
           <% if current_user.headquarter_invite_accepted?(headquarter) %>
-            <%= link_to app_headquarters_url(headquarter), class: "hq__list__item" do %>
+            <%= link_to app_headquarter_url(headquarter), class: "hq__list__item" do %>
               <%= embed_svg "check", size: 20, class: "hq__list__icon hq__list__icon--success" %>
               <%= headquarter.name %>
             <% end %>
           <% else %>
-            <%= link_to app_headquarters_url(headquarter), class: "hq__list__item" do %>
+            <%= link_to app_headquarter_url(headquarter), class: "hq__list__item" do %>
               <%= embed_svg "exclamation", size: 20, class: "hq__list__icon hq__list__icon--warning" %>
               <%= headquarter.name %>
             <% end %>
