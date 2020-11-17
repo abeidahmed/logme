@@ -14,7 +14,7 @@ RSpec.describe ProjectPolicy, type: :policy do
         HeadquarterTeamAdder.new(user: user, headquarter: headquarter, role: "owner").save
       end
 
-      it { is_expected.to permit_actions(%i(create)) }
+      it { is_expected.to permit_actions(%i(create new)) }
     end
 
     context "being a member of the headquarter" do
@@ -22,7 +22,7 @@ RSpec.describe ProjectPolicy, type: :policy do
         HeadquarterTeamAdder.new(user: user, headquarter: headquarter).save
       end
 
-      it { is_expected.to permit_actions(%i(create)) }
+      it { is_expected.to permit_actions(%i(create new)) }
     end
 
     context "being a spectator of the headquarter" do
@@ -30,7 +30,7 @@ RSpec.describe ProjectPolicy, type: :policy do
         HeadquarterTeamAdder.new(user: user, headquarter: headquarter, invited: true).save
       end
 
-      it { is_expected.to forbid_actions(%i(create)) }
+      it { is_expected.to forbid_actions(%i(create new)) }
     end
   end
 

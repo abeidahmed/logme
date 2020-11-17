@@ -1,0 +1,12 @@
+<%= form_with model: [:app, @headquarter, @project] do |f| %>
+  <%= f.label :name, "Project name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :url, "Company URL" %>
+  <%= f.text_field :url %>
+
+  <%= f.label :subdomain, "Subdomain" %>
+  <%= f.text_field :subdomain %>
+
+  <%= f.submit "Create new" %>
+<% end %>

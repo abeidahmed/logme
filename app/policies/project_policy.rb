@@ -1,6 +1,10 @@
 class ProjectPolicy < ApplicationPolicy
-  def create?
+  def new?
     good_headquarter_member?
+  end
+
+  def create?
+    new?
   end
 
   def show?
