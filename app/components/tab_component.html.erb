@@ -1,0 +1,10 @@
+<nav
+  data-controller="active-link"
+  data-active-link-exact="true"
+  data-active-link-class="tab__item--active"
+  class="tab"
+>
+  <% @links.each do |link| %>
+    <%= link_to link[:name], link[:url], data: { target: "active-link.link" }, class: "tab__item" %>
+  <% end %>
+</nav>
