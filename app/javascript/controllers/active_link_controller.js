@@ -8,11 +8,17 @@ export default class extends Controller {
       const href = el.getAttribute('href');
 
       if (this.dataExact) {
-        if (location.href === href) {
+        if (
+          location.href === href ||
+          location.pathname + location.search === href
+        ) {
           el.classList.add(this.activeClass);
         }
       } else {
-        if (location.href.startsWith(href)) {
+        if (
+          location.href.startsWith(href) ||
+          (location.pathname + location.search).startsWith(href)
+        ) {
           el.classList.add(this.activeClass);
         }
       }
