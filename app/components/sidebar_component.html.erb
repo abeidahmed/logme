@@ -9,9 +9,9 @@
       <%= embed_svg "folder", size: 24 %>
     <% end %>
 
-    <a href="#" class="sidebar__link sidebar__link--active">
+    <%= link_to app_headquarter_hq_memberships_url(@headquarter), class: "sidebar__link" do %>
       <%= embed_svg "users", size: 24 %>
-    </a>
+    <% end %>
 
     <a href="#" class="sidebar__link">
       <%= embed_svg "cog", size: 24 %>
