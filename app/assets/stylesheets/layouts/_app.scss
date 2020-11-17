@@ -6,12 +6,14 @@
   flex: 1 1 0%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .app__main {
   background-color: $gray-100;
   height: calc(100vh - #{$app-header-height});
   padding: 28px 16px;
+  overflow-y: auto;
 
   @include breakpoint(sm) {
     padding-left: 28px;
