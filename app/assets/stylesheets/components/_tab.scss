@@ -1,0 +1,24 @@
+.tab {
+  display: flex;
+  align-items: center;
+}
+
+.tab__item {
+  padding: 0 12px;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+  color: $gray-500;
+  font-weight: 400;
+  font-family: $font-family-default;
+
+  &:hover:not(.tab__item--active) {
+    border-color: $gray-200;
+    color: $gray-700;
+  }
+}
+
+.tab__item--active {
+  font-weight: 500;
+  color: $blue-600;
+  border-color: $blue-600;
+}
