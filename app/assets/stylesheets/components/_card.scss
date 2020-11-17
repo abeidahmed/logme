@@ -12,6 +12,14 @@
   }
 }
 
+.card__left {
+  flex-shrink: 0;
+}
+
+.card__right {
+  flex: 1 1 0%;
+}
+
 .card__link {
   position: absolute;
   @include inset-full;
