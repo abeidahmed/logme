@@ -2,6 +2,7 @@ $z-index: (
   dropdown: 70,
   overlay: 80,
   toast: 110,
+  modal: 120,
 );
 
 @function z($name, $z: $z-index) {

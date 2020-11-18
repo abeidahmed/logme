@@ -1,0 +1,14 @@
+<div data-target="modal.container" class="modal modal--hidden">
+  <div class="modal__positioner">
+    <div data-target="modal.overlay" class="overlay"><div></div></div>
+    <div data-action="click@window->modal#onOutsideClick" data-target="modal.body" class="modal__content">
+      <header class="modal__header box__header">
+        <h3 class="modal__title"><%= @title %></h3>
+        <button data-action="click->modal#hideModal" class="btn__icon btn__icon--right">
+          <%= embed_svg "x", size: 24 %>
+        </button>
+      </header>
+      <%= body %>
+    </div>
+  </div>
+</div>

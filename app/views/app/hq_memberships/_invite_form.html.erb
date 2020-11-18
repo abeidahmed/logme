@@ -1,0 +1,49 @@
+<%= render Containers::ModalComponent.new(title: "Invite colleague to HQ") do |component| %>
+  <% component.with(:body) do %>
+    <div class="box--restrict">
+      <form class="box__content--with-footer box--overflow form">
+        <section>
+          <div class="form__group">
+            <label for="#" class="form__label">Full name</label>
+            <input type="text" class="input">
+          </div>
+          <div class="form__group">
+            <label for="#" class="form__label">Email address</label>
+            <input type="email" class="input">
+          </div>
+          <div class="form__group">
+            <label for="#" class="form__label">Role</label>
+            <div class="radio__group-custom">
+              <div class="radio__wrapper">
+                <label class="radio__custom-label">
+                  <input type="radio" name="role" class="input__radio">
+                  <p class="input__radio-content">
+                    <span class="input__radio-name">Owner</span>
+                    <span class="input__radio-description">can manage the entire account, billings, etc</span>
+                  </p>
+                </label>
+              </div>
+              <div class="radio__wrapper">
+                <label class="radio__custom-label">
+                  <input type="radio" name="role" class="input__radio">
+                  <p class="input__radio-content">
+                    <span class="input__radio-name">Member</span>
+                    <span class="input__radio-description">can manage project, changelogs, etc</span>
+                  </p>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+    <div class="box__footer box__footer--right">
+      <button data-action="click->modal#hideModal" class="btn btn--outlined">
+        Cancel
+      </button>
+      <button class="btn btn--primary">
+        Send invite
+      </button>
+    </div>
+  <% end %>
+<% end %>

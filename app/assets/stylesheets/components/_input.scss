@@ -61,3 +61,112 @@
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
+
+// radio
+.radio__group-custom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+
+  > * + * {
+    margin-top: 12px;
+  }
+
+  @include breakpoint(sm) {
+    flex-direction: row;
+
+    > * + * {
+      margin-top: 0;
+      margin-left: 12px;
+    }
+  }
+}
+
+.radio__wrapper {
+  width: 100%;
+}
+
+.radio__custom-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  transition: all 150ms ease-in-out;
+  border: 1px solid $gray-200;
+  border-radius: 6px;
+  cursor: pointer;
+
+  @include breakpoint(sm) {
+    justify-content: center;
+  }
+
+  &:hover {
+    border-color: $gray-500;
+  }
+}
+
+.input__radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  display: inline-block;
+  vertical-align: middle;
+  background-origin: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+  border-radius: 100%;
+  height: 1.2em;
+  width: 1.2em;
+  color: $gray-900;
+  background-color: #fff;
+  border-color: #e2e8f0;
+  border-width: 1px;
+}
+
+.input__radio:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  border-color: transparent;
+  background-color: currentColor;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media not print {
+  .input__radio::-ms-check {
+    border-width: 1px;
+    color: transparent;
+    background: inherit;
+    border-color: inherit;
+    border-radius: inherit;
+  }
+}
+
+.input__radio:focus {
+  outline: none;
+  box-shadow: $shadow-outline;
+  border-color: #63b3ed;
+}
+
+.input__radio-content {
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.input__radio-name {
+  display: block;
+  font-weight: 500;
+  color: $gray-700;
+}
+
+.input__radio-description {
+  display: block;
+  line-height: 20px;
+  color: $gray-500;
+}

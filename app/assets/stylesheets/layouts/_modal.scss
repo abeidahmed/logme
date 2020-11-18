@@ -1,0 +1,49 @@
+.modal {
+  position: fixed;
+  z-index: z(modal);
+  @include inset-full;
+  overflow-y: auto;
+}
+
+.modal__positioner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.modal__content {
+  display: inline-block;
+  vertical-align: bottom;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: z(modal);
+  width: 100%;
+  box-shadow: $shadow-xl;
+  transition: all 100ms ease-in-out;
+
+  @include breakpoint(sm) {
+    margin: 32px 0;
+    vertical-align: middle;
+    max-width: $mw-lg;
+  }
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal__title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: $gray-900;
+}
+
+.modal--hidden {
+  display: none;
+}

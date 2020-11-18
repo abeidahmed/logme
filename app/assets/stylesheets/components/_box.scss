@@ -4,7 +4,6 @@
   box-shadow: $shadow-default;
   width: 100%;
   overflow: hidden;
-  // padding: 36px;
 }
 
 .box__content {
@@ -20,12 +19,25 @@
 }
 
 .box__content--with-footer {
-  padding: 20px 24px 12px 24px;
+  padding: 12px 24px;
+}
+
+.box__header {
+  border-bottom: 1px solid;
 }
 
 .box__footer {
+  border-top: 1px solid;
+}
+
+.box__header,
+.box__footer {
   background-color: $gray-50;
   padding: 12px 24px;
+  border-color: $gray-200;
+}
+
+.box__footer {
   display: flex;
   align-items: center;
 
@@ -60,4 +72,16 @@
 
 .box--sm:not(.box--fw-mobile) {
   max-width: $mw-md;
+}
+
+.box--restrict {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 575px;
+}
+
+.box--overflow {
+  overflow-y: auto;
+  flex: 1 1 0%;
 }
