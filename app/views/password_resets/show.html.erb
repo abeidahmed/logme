@@ -1,1 +1,19 @@
-<%= @user.email %>
+<%= render Containers::FocussedComponent.new(title: "Check your email") do |component| %>
+  <% component.with(:body) do %>
+    <%= embed_svg "email-sent", style: "height: 160px", class: "mx-auto" %>
+    <p class="mt-4 font--description">
+      Check your
+      <span class="font-medium text-gray-900">
+        <%= @user.email %>
+      </span>
+      inbox for instructions from us on how to reset your password.
+    </p>
+  <% end %>
+
+  <% component.with(:footer) do %>
+    <p class="focus__footer-text">
+      Go back to
+      <%= link_to "sign in", new_session_url, class: "link link--primary link--weighted" %>
+    </p>
+  <% end %>
+<% end %>
