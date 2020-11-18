@@ -9,5 +9,10 @@ FactoryBot.define do
     trait :owner do
       role { "owner" }
     end
+
+    trait :pending_owner do
+      owner
+      invitation_accepted { false }
+    end
   end
 end
