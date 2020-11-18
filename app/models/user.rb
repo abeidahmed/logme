@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  include HeadquarterTenant
+  include PasswordReset
+  include ProjectTenant
+
   has_many :hq_memberships
   has_many :headquarters, through: :hq_memberships
   has_many :project_memberships
@@ -16,9 +20,6 @@ class User < ApplicationRecord
   validates_length_of :email, :name, maximum: 255
   validates_format_of :email, with: VALID_EMAIL_REGEX
   validates_length_of :password, minimum: 6, allow_blank: true
-
-  include HeadquarterTenant
-  include ProjectTenant
 
   private
   def generate_auth_token
