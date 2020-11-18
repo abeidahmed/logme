@@ -147,7 +147,7 @@ button,
 [role='button'],
 input[type='submit'] {
   cursor: pointer;
-  font-family: $font-family-arial;
+  font-family: $font-family-default;
   transition: all 150ms ease-in-out;
 
   &:focus:not([data-focus-visible-added]) {
