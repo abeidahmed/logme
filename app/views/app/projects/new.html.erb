@@ -1,12 +1,50 @@
-<%= form_with model: [:app, @headquarter, @project] do |f| %>
-  <%= f.label :name, "Project name" %>
-  <%= f.text_field :name %>
-
-  <%= f.label :url, "Company URL" %>
-  <%= f.text_field :url %>
-
-  <%= f.label :subdomain, "Subdomain" %>
-  <%= f.text_field :subdomain %>
-
-  <%= f.submit "Create new" %>
-<% end %>
+<div class="box box--center box--sm">
+  <h1 class="box__title box__title--center">Create a new project</h1>
+  <section>
+    <%= form_with model: [:app, @headquarter, @project],
+      data: {
+        controller: "form",
+        action: "ajax:error->form#onError"
+      },
+      html: { class: "form" } do |f|
+    %>
+      <section class="box__content--with-footer">
+        <div class="form__group">
+          <%= f.label :name, "Project name", class: "form__label" %>
+          <%= f.text_field :name, class: "input", autocomplete: "off", required: true %>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "name") %>
+        </div>
+        <div class="form__group">
+          <%= f.label :url, "Company URL", class: "form__label" %>
+          <%= f.text_field :url, class: "input", autocomplete: "off", required: true %>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "url") %>
+        </div>
+        <div class="form__group">
+          <%= f.label :subdomain, class: "form__label" %>
+          <div class="input__group input__group--prepended input__group--appended">
+            <div class="input__group__prepend">
+              https://
+            </div>
+            <%= f.text_field :subdomain, class: "input", autocomplete: "off", required: true %>
+            <div class="input__group__append">
+              .applog.space
+            </div>
+          </div>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "subdomain") %>
+        </div>
+        <div class="form__group">
+          <div class="form__hint-container">
+            <%= f.label :description, class: "form__label" %>
+            <p class="form__hint">(optional)</p>
+          </div>
+          <%= f.text_area :description, class: "input", autocomplete: "off", rows: 3 %>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "description") %>
+        </div>
+      </section>
+      <div class="box__footer box__footer--right">
+        <%= link_to "Cancel", app_headquarter_projects_url(@headquarter), class: "btn btn--outlined" %>
+        <%= f.submit "Create new", class: "btn btn--primary" %>
+      </div>
+    <% end %>
+  </section>
+</div>
