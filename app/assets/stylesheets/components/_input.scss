@@ -5,20 +5,59 @@
   background-color: #fff;
   border: 1px solid $gray-300;
   border-radius: 6px;
-  padding: 8px 12px;
   box-shadow: $shadow-sm;
   transition: box-shadow 150ms ease-in-out;
   font-size: 16px;
-  line-height: 24px;
   z-index: 10;
 
   &:focus {
     outline: none;
     box-shadow: $shadow-outline;
   }
+}
+
+.input,
+.input__group__prepend,
+.input__group__append {
+  padding: 8px 12px;
+  line-height: 24px;
 
   @include breakpoint(sm) {
     font-size: 14px;
     line-height: 20px;
   }
+}
+
+.input__group {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.input__group--prepended .input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+.input__group--appended .input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: -1px;
+}
+
+.input__group__prepend,
+.input__group__append {
+  background-color: $gray-100;
+  border: 1px solid $gray-300;
+}
+
+.input__group__prepend {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.input__group__append {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
