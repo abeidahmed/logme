@@ -1,5 +1,5 @@
 <div class="container container--sm">
-  <%= render Headers::ActionableComponent.new(title: "HQ members") do |component| %>
+  <%= render Headers::ActionableComponent.new(title: "Project members") do |component| %>
     <% component.with(:actioner) do %>
       <button class="btn btn__pill">
         <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
@@ -10,7 +10,7 @@
   <div class="actionable__content">
     <%= render "tab" %>
     <div class="grid__three_centered mt-4">
-      <% @hq_memberships.each do |member| %>
+      <% @project_memberships.each do |member| %>
         <%= render "member_card", member: member %>
       <% end %>
     </div>

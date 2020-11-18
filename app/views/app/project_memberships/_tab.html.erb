@@ -1,0 +1,13 @@
+<%= render TabComponent.new(
+    links: [
+      {
+        name: "All",
+        url: app_project_project_memberships_url(@project.id)
+      },
+      {
+        name: "Pending",
+        url: request.query_parameters.merge({ role: "pending" })
+      }
+    ]
+  )
+%>

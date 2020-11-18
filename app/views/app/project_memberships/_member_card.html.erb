@@ -1,0 +1,33 @@
+<%= render Cards::SplitModelComponent.new(title: member.name) do |component| %>
+  <% component.with(:left_body) do %>
+    <div class="avatar__container">
+      <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="avatar avatar--lg avatar--rounded">
+    </div>
+  <% end %>
+  <% component.with(:right_body) do %>
+    <div class="card__description truncate">
+      <a href="mailto:<%= member.email %>" class="link link--primary link--weighted truncate">
+        <%= member.email %>
+      </a>
+      <% if member.job_title %>
+        <p class="card__description truncate">
+          <%= member.job_title %> at <%= @project.name %>
+        </p>
+      <% end %>
+      <p class="font--support">
+        Good vibes since <%= format_date(member.join_date) %>
+      </p>
+    </div>
+    <% unless member.invitation_accepted? %>
+      <div class="ml-auto">
+        <%= render BadgeComponent.new(title: "Pending", label: "Invite pending", type: "warning") %>
+      </div>
+    <% end %>
+  <% end %>
+  <% component.with(:actions) do %>
+    <a href="#" class="card__option-item">
+      <%= embed_svg "user-remove-solid", size: 20 %>
+      Remove from project team
+    </a>
+  <% end %>
+<% end %>

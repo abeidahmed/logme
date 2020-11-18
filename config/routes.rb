@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :hq_memberships, only: %i(index)
     end
 
-    resources :projects, only: %i(show)
+    resources :projects, only: %i(show) do
+      resources :project_memberships, only: %i(index)
+    end
   end
 end
