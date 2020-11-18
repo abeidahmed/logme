@@ -10,4 +10,8 @@ module SessionsHelper
   def user_signed_in?
     !!current_user
   end
+
+  def logout_user
+    cookies.delete(:auth_token) if user_signed_in?
+  end
 end

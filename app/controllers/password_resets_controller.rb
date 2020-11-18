@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
     user = PasswordReset::Initiator.new(email: params[:email])
 
     if user.initialized_reset
-      cookies.delete(:auth_token)
+      logout_user
       redirect_to password_reset_url(user.id)
     else
       render json: { errors: user.errors }, status: :bad_request
@@ -30,7 +30,7 @@ class PasswordResetsController < ApplicationController
     )
 
     if user.reset_password
-      cookies.delete(:auth_token)
+      logout_user
       redirect_to new_session_url, success: "Now you can login with your new password"
     else
       render json: { errors: user.errors }, status: :bad_request

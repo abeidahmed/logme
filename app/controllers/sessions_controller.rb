@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:auth_token) if user_signed_in?
+    logout_user
     @current_user = nil
     redirect_to new_session_url, success: "Successfully logged out"
   end

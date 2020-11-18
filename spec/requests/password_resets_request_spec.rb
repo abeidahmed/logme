@@ -5,7 +5,7 @@ RSpec.describe "PasswordResets", type: :request do
     context "when the user is a member of Applog" do
       let(:user) { create(:user) }
       before do
-        cookies[:auth_token] = "hello"
+        login(user)
         post password_resets_url, params: { email: user.email.upcase }
       end
 
@@ -43,7 +43,7 @@ RSpec.describe "PasswordResets", type: :request do
     context "when the update request is valid" do
       let(:user) { create(:user, :forgot_password) }
       before do
-        cookies[:auth_token] = "hello"
+        login(user)
         patch password_reset_url(user.password_reset_token), params: { password: "hello1234", confirm_password: "hello1234" }
       end
 
