@@ -3,7 +3,43 @@
   background-color: #fff;
   box-shadow: $shadow-default;
   width: 100%;
+  overflow: hidden;
+  // padding: 36px;
+}
+
+.box__content {
   padding: 36px;
+}
+
+.box__title {
+  color: $gray-900;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 24px 24px 0 24px;
+}
+
+.box__content--with-footer {
+  padding: 20px 24px 12px 24px;
+}
+
+.box__footer {
+  background-color: $gray-50;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-left: 12px;
+  }
+}
+
+.box__footer--right {
+  justify-content: flex-end;
+}
+
+.box__title--center {
+  text-align: center;
 }
 
 .box--center {
@@ -20,4 +56,8 @@
       max-width: $mw-md;
     }
   }
+}
+
+.box--sm:not(.box--fw-mobile) {
+  max-width: $mw-md;
 }
