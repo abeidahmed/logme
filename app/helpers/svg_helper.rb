@@ -15,6 +15,8 @@ module SvgHelper
       svg["width"]  = options[:size]
       svg["height"] = options[:size]
     end
+
+    svg["style"] = options[:style] if options[:style].present?
   end
 
   def file_path(filename)
