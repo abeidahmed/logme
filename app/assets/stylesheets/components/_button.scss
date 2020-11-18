@@ -8,7 +8,7 @@
   padding: 8px 16px;
   border: 1px solid transparent;
   box-shadow: $shadow-sm;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 150ms ease-in-out;
   text-align: center;
   font-size: 16px;
@@ -86,6 +86,7 @@
 .btn--outlined {
   border-color: $gray-300;
   color: $gray-700;
+  background-color: #fff;
 
   &:hover {
     color: $gray-500;
@@ -104,4 +105,5 @@
 .btn.btn--graphik {
   // nested for specificity issues
   font-family: $font-family-graphik;
+  font-weight: 500;
 }
