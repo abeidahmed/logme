@@ -15,11 +15,13 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
+  MIN_PASSWORD_LENGTH = 6 # used by password reset
+
   validates_presence_of :email, :name
   validates_uniqueness_of :email, case_sensitive: false
   validates_length_of :email, :name, maximum: 255
   validates_format_of :email, with: VALID_EMAIL_REGEX
-  validates_length_of :password, minimum: 6, allow_blank: true
+  validates_length_of :password, minimum: MIN_PASSWORD_LENGTH, allow_blank: true
 
   private
   def generate_auth_token
