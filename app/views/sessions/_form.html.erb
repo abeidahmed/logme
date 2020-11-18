@@ -12,7 +12,10 @@
     </div>
 
     <div class="form__group">
-      <%= f.label :password, class: "form__label" %>
+      <div class="flex items-center justify-between">
+        <%= f.label :password, class: "form__label" %>
+        <%= link_to "Forgot password?", "#", class: "link link--primary text-sm" %>
+      </div>
       <%= f.password_field :password, class: "input" %>
     </div>
 

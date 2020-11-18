@@ -1,0 +1,7 @@
+$displays: (flex);
+
+@each $prop in $displays {
+  .#{$prop} {
+    display: $prop;
+  }
+}
