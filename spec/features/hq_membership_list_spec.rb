@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "HqMembershipLists", type: :feature do
-  context "being a pemanent memeber of the headquarter" do
+  context "being a pemanent member of the headquarter" do
     let(:hq_membership) { create(:hq_membership) }
 
     it "should list all the members within the headquarter" do
