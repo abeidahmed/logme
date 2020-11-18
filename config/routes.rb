@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :app do
     resources :headquarters, only: %i(create show) do
       resources :projects, only: %i(index new create)
-      resources :hq_memberships, only: %i(index)
+      resources :hq_memberships, only: %i(index create)
     end
 
     resources :projects, only: %i(show) do
