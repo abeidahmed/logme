@@ -8,7 +8,7 @@
   <section>
     <div class="form__group">
       <%= f.label :email, "Email address", class: "form__label" %>
-      <%= f.email_field :email, class: "input" %>
+      <%= f.email_field :email, class: "input", required: true %>
       <%= render Forms::ErrorDisplayComponent.new(error_type: "invalid") %>
     </div>
   </section>

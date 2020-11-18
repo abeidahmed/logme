@@ -22,4 +22,27 @@ RSpec.feature "PasswordResets", type: :feature do
       expect(page).to have_text(user.email)
     end
   end
+
+  context "when the password reset token has expired" do
+    it "should redirect to new password reset page" do
+      user = create(:user, :with_expired_token)
+      visit edit_password_reset_url(user.password_reset_token)
+
+      expect(current_url).to eq(new_password_reset_url)
+      expect(page).to have_text("expired")
+    end
+  end
+
+  context "when the user has valid password reset token" do
+    it "should reset the password" do
+      user = create(:user, :forgot_password)
+      visit edit_password_reset_url(user.password_reset_token)
+      fill_in "password", with: "helloworld"
+      fill_in "confirm_password", with: "helloworld"
+      click_button "password"
+
+      expect(current_url).to eq(new_session_url)
+      expect(page).to have_text("new password")
+    end
+  end
 end

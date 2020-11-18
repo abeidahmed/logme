@@ -17,6 +17,11 @@ class PasswordResetsController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find_by_password_reset_token!(params[:id])
+    redirect_to new_password_reset_url, alert: "Password reset has expired" if @user.password_reset_token_expired?
+  end
+
   def update
     user = PasswordReset::Persistor.new(
       reset_token: params[:id],

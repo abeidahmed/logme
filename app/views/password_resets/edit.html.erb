@@ -1,0 +1,8 @@
+<%= render Containers::FocussedComponent.new(title: "Forgot your password?") do |component| %>
+  <% component.with(:body) do  %>
+    <%= render "persistor_form", url: password_reset_url(@user.password_reset_token) %>
+    <p class="font--description mt-4">
+      After resetting your password, you will be redirected to login page where you need to sign in using the new password.
+    </p>
+  <% end %>
+<% end %>
