@@ -1,0 +1,14 @@
+<%= render Containers::FocussedComponent.new(title: "Forgot your password?") do |component| %>
+  <% component.with(:body) do  %>
+    <p class="font--description mb-4">
+      To reset your password, enter the email address that you used to use to sign in.
+    </p>
+    <%= render "initiator_form", url: password_resets_url %>
+  <% end %>
+  <% component.with(:footer) do %>
+    <p class="focus__footer-text">
+      Nevermind, take me back to
+      <%= link_to "sign in", new_session_url, class: "link link--primary link--weighted" %>
+    </p>
+  <% end %>
+<% end %>

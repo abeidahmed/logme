@@ -1,4 +1,7 @@
 class PasswordResetsController < ApplicationController
+  def new
+  end
+
   def create
     user = PasswordReset::Initiator.new(email: params[:email])
 
@@ -8,6 +11,10 @@ class PasswordResetsController < ApplicationController
     else
       render json: { errors: user.errors }, status: :bad_request
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def update

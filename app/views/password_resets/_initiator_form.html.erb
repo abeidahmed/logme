@@ -1,0 +1,18 @@
+<%= form_with url: url,
+  data: {
+    controller: "form",
+    action: "ajax:error->form#onError"
+  },
+  html: { class: "form" } do |f|
+%>
+  <section>
+    <div class="form__group">
+      <%= f.label :email, "Email address", class: "form__label" %>
+      <%= f.email_field :email, class: "input" %>
+      <%= render Forms::ErrorDisplayComponent.new(error_type: "invalid") %>
+    </div>
+  </section>
+  <div class="form__btn-group">
+    <%= f.submit "Get password reset link", class: "btn btn--primary btn--block btn--graphik" %>
+  </div>
+<% end %>
