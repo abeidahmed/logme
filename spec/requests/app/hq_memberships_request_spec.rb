@@ -22,9 +22,9 @@ RSpec.describe "App::HqMemberships", type: :request do
         expect(last_membership.invitation_accepted).to be_falsy
       end
 
-      # it "should send an invite email" do
-      #   expect(last_email.subject).to eq("You have an invitation to #{headquarter.name}")
-      # end
+      it "should send an invitation email" do
+        expect(last_email.subject).to eq("You have an invitation to #{headquarter.name}")
+      end
 
       it "should not set password reset fields" do
         last_membership = headquarter.hq_memberships.unscoped.last
@@ -57,6 +57,10 @@ RSpec.describe "App::HqMemberships", type: :request do
       it "should set password reset fields" do
         expect(User.last.password_reset_token).to_not be_nil
         expect(User.last.password_reset_sent_at).to_not be_nil
+      end
+
+      it "should send an invitation email" do
+        expect(last_email.encoded).to match(/noticed/)
       end
     end
 

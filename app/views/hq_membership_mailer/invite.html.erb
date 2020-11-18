@@ -1,0 +1,10 @@
+<h1>Invite pending</h1>
+
+<% if @new_user %>
+  <p>We noticed that you aren't a part of Applog family, and hence we took the initiative of creating a new account for you. Hope you do not mind.</p>
+  <p>
+    <span class="underline">Login details:</span><br>
+    <span>Email address: </span> <span><b><%= @user.email %></b></span><br>
+    <%= link_to "Update your account", edit_password_reset_url(@user.password_reset_token) %>
+  </p>
+<% end %>

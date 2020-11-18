@@ -17,9 +17,8 @@ class Invitation::Headquarter
 
   def save
     if valid?
-      user.set_password_reset_fields if user.new_record?
-      user.save
-      invite_to_headquarter
+      Invitation::Mailer::Deliver.new(user: user, object: headquarter).deliver_invitation
+      persist_user_and_add_to_headquarter
       true
     else
       false
@@ -27,14 +26,12 @@ class Invitation::Headquarter
   end
 
   private
-  def invite_to_headquarter
+  def persist_user_and_add_to_headquarter
     HeadquarterTeamAdder.new(user: user, headquarter: headquarter, role: user_role, invited: true).save
   end
 
   def member_uniqueness
-    if headquarter.hq_memberships.exists?(user_id: user.id)
-      errors.add(:user, "is already on the HQ")
-    end
+    errors.add(:user, "is already on the HQ") if headquarter.hq_memberships.exists?(user_id: user.id)
   end
 
   def user_email
