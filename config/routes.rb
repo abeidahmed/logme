@@ -14,6 +14,6 @@ Rails.application.routes.draw do
       resources :project_memberships, only: %i(index)
     end
 
-    resources :hq_invitations, only: %i(show)
+    resources :hq_invitations, only: %i(show update destroy)
   end
 end

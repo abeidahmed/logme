@@ -1,10 +1,18 @@
 class HqMembershipPolicy < ApplicationPolicy
+  def create?
+    good_headquarter_member?
+  end
+
   def show?
     good_candidate_for_joining?
   end
 
-  def create?
-    good_headquarter_member?
+  def update?
+    show?
+  end
+
+  def destroy?
+    show?
   end
 
   class Scope < Scope

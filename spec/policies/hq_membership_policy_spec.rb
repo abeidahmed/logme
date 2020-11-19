@@ -36,13 +36,19 @@ RSpec.describe HqMembershipPolicy, type: :policy do
     include_examples "being_a_visitor"
 
     context "being an invited user" do
-      it { is_expected.to permit_actions(%i(show)) }
+      it { is_expected.to permit_actions(%i(show update destroy)) }
     end
 
     context "being an uninvited user" do
       let(:user) { create(:user) }
 
-      it { is_expected.to forbid_actions(%i(show)) }
+      it { is_expected.to forbid_actions(%i(show update destroy)) }
+    end
+
+    context "being a permanent member" do
+      let(:hq_membership) { create(:hq_membership) }
+
+      it { is_expected.to forbid_actions(%i(show update destroy)) }
     end
   end
 end
