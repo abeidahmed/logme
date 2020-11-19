@@ -24,6 +24,14 @@
 .card__link {
   position: absolute;
   @include inset-full;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 6px;
+
+  &[data-focus-visible-added] {
+    border: 2px solid black;
+  }
 }
 
 .card__header {
@@ -72,12 +80,12 @@
   @include inset-full;
   background-color: #fff;
   padding: 20px 0;
-  transition: all 150ms ease-in-out;
-  transform: translateX(200%);
+  display: none;
 }
 
 .card__option-container--active {
-  transform: translateX(0);
+  display: block;
+  animation: slide-from-right 150ms ease-out 0s alternate;
 }
 
 .card__option-header {

@@ -27,3 +27,14 @@
     transform: scale(1);
   }
 }
+
+@keyframes slide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(200%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
