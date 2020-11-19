@@ -18,7 +18,7 @@ class App::HqMembershipsController < App::ApplicationController
     )
 
     if member.save
-
+      redirect_to app_headquarter_hq_memberships_url(headquarter), success: "Invitation sent to #{member.email}"
     else
       render json: { errors: member.errors }, status: :bad_request
     end

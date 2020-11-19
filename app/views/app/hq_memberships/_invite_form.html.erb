@@ -1,49 +1,57 @@
 <%= render Containers::ModalComponent.new(title: "Invite colleague to HQ") do |component| %>
   <% component.with(:body) do %>
-    <div class="box--restrict">
-      <form class="box__content--with-footer box--overflow form">
-        <section>
-          <div class="form__group">
-            <label for="#" class="form__label">Full name</label>
-            <input type="text" class="input">
-          </div>
-          <div class="form__group">
-            <label for="#" class="form__label">Email address</label>
-            <input type="email" class="input">
-          </div>
-          <div class="form__group">
-            <label for="#" class="form__label">Role</label>
-            <div class="radio__group-custom">
-              <div class="radio__wrapper">
-                <label class="radio__custom-label">
-                  <input type="radio" name="role" class="input__radio">
-                  <p class="input__radio-content">
-                    <span class="input__radio-name">Owner</span>
-                    <span class="input__radio-description">can manage the entire account, billings, etc</span>
-                  </p>
-                </label>
-              </div>
-              <div class="radio__wrapper">
-                <label class="radio__custom-label">
-                  <input type="radio" name="role" class="input__radio">
-                  <p class="input__radio-content">
-                    <span class="input__radio-name">Member</span>
-                    <span class="input__radio-description">can manage project, changelogs, etc</span>
-                  </p>
-                </label>
+    <%= form_with url: app_headquarter_hq_memberships_url(@headquarter),
+      data: {
+        controller: "form",
+        action: "ajax:error->form#onError"
+      },
+      class: "form" do |f|
+    %>
+      <div class="box--restrict">
+        <div class="box__content--with-footer box--overflow">
+          <section>
+            <div class="form__group">
+              <%= f.label :name, "Full name", class: "form__label" %>
+              <%= f.text_field :name, class: "input", autocomplete: "off", required: true %>
+              <%= render Forms::ErrorDisplayComponent.new(error_type: "name") %>
+            </div>
+            <div class="form__group">
+              <%= f.label :email, "Email address", class: "form__label" %>
+              <%= f.email_field :email, class: "input", autocomplete: "off", required: true %>
+              <%= render Forms::ErrorDisplayComponent.new(error_type: "email") %>
+            </div>
+            <div class="form__group">
+              <label for="#" class="form__label">Role</label>
+              <div class="radio__group-custom">
+                <div class="radio__wrapper">
+                  <%= label_tag "", class: "radio__custom-label" do %>
+                    <%= f.radio_button :role, :owner, class: "input__radio" %>
+                    <p class="input__radio-content">
+                      <span class="input__radio-name">Owner</span>
+                      <span class="input__radio-description">can manage the entire account, billings, etc</span>
+                    </p>
+                  <% end %>
+                </div>
+                <div class="radio__wrapper">
+                  <%= label_tag "", class: "radio__custom-label" do %>
+                    <%= f.radio_button :role, :member, checked: true, class: "input__radio" %>
+                    <p class="input__radio-content">
+                      <span class="input__radio-name">Member</span>
+                      <span class="input__radio-description">can manage project, changelogs, etc</span>
+                    </p>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </form>
-    </div>
-    <div class="box__footer box__footer--right">
-      <button data-action="click->modal#hideModal" class="btn btn--outlined">
-        Cancel
-      </button>
-      <button class="btn btn--primary">
-        Send invite
-      </button>
-    </div>
+          </section>
+        </div>
+      </div>
+      <div class="box__footer box__footer--right">
+        <button data-action="click->modal#hideModal" class="btn btn--outlined">
+          Cancel
+        </button>
+        <%= f.submit "Send invite", class: "btn btn--primary" %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
