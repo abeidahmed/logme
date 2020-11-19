@@ -1,4 +1,8 @@
-<%= render Cards::SplitModelComponent.new(title: member.name) do |component| %>
+<%= render Cards::SplitModelComponent.new(
+    title: member.name,
+    show_actions: current_user.headquarter_owner?(member.headquarter) || current_user == member.user
+  ) do |component|
+%>
   <% component.with(:left_body) do %>
     <div class="avatar__container">
       <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="avatar avatar--lg avatar--rounded">
@@ -22,13 +26,27 @@
     <% end %>
   <% end %>
   <% component.with(:actions) do %>
-    <a href="#" class="card__option-item">
-      <%= embed_svg "trending-up-solid", size: 20 %>
-      Promote to owner
-    </a>
-    <a href="#" class="card__option-item">
-      <%= embed_svg "user-remove-solid", size: 20 %>
-      Remove from HQ
-    </a>
+    <% if current_user == member.user %>
+      <a href="#" class="card__option-item">
+        <%= embed_svg "user-remove-solid", size: 20 %>
+        Exit from HQ
+      </a>
+    <% else %>
+      <% if member.headquarter_owner?(member.headquarter) %>
+        <a href="#" class="card__option-item">
+          <%= embed_svg "trending-up-solid", size: 20 %>
+          Demote to member
+        </a>
+      <% else %>
+        <a href="#" class="card__option-item">
+          <%= embed_svg "trending-up-solid", size: 20 %>
+          Promote to owner
+        </a>
+      <% end %>
+      <a href="#" class="card__option-item">
+        <%= embed_svg "user-remove-solid", size: 20 %>
+        Remove from HQ
+      </a>
+    <% end %>
   <% end %>
 <% end %>

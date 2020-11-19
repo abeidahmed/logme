@@ -11,5 +11,5 @@ class HqMembership < ApplicationRecord
 
   validates_uniqueness_of :user, case_sensitive: false, scope: :headquarter_id, message: "is already on the HQ"
 
-  delegate :name, :email, to: :user
+  delegate :name, :email, :headquarter_owner?, to: :user
 end
