@@ -24,6 +24,17 @@ class App::HeadquartersController < App::ApplicationController
     @projects = policy_scope @headquarter, policy_scope_class: ProjectPolicy::Scope
   end
 
+  def update
+    headquarter = Headquarter.find(params[:id])
+    authorize headquarter
+
+    if headquarter.update(headquarter_params)
+      redirect_to root_url
+    else
+      render json: { errors: headquarter.errors }, status: :bad_request
+    end
+  end
+
   private
   def headquarter_params
     params.require(:headquarter).permit(:name, :description)
