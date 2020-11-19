@@ -1,0 +1,28 @@
+<%= render Containers::ModalComponent.new(title: "Add new HQ") do |component| %>
+  <% component.with(:body) do %>
+    <form class="form">
+      <div class="box--restrict">
+        <div class="box__content--with-footer box--overflow">
+          <section>
+            <div class="form__group">
+              <label for="" class="form__label">Name</label>
+              <input type="text" class="input">
+            </div>
+            <div class="form__group">
+              <label for="" class="form__label">Description</label>
+              <textarea rows="4" class="input"></textarea>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="box__footer box__footer--right">
+        <button type="button" data-action="click->modal#hideModal" class="btn btn--outlined">
+          Cancel
+        </button>
+        <button class="btn btn--primary">
+          Create new
+        </button>
+      </div>
+    </form>
+  <% end %>
+<% end %>

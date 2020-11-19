@@ -12,9 +12,12 @@
         <h3 class="font--title">
           HQs you're part of
         </h3>
-        <button class="btn__icon btn__icon--right">
-          <%= embed_svg "plus", size: 24 %>
-        </button>
+        <div data-controller="modal">
+          <button data-target="modal.opener" data-action="click->modal#showModal" class="btn__icon btn__icon--right">
+            <%= embed_svg "plus", size: 24 %>
+          </button>
+          <%= render "app/headquarters/new_form" %>
+        </div>
       </div>
       <ul class="hq__list">
         <% headquarters.each do |headquarter| %>
