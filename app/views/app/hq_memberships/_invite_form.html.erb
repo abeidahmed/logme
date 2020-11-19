@@ -20,29 +20,36 @@
               <%= f.email_field :email, class: "input", autocomplete: "off", required: true %>
               <%= render Forms::ErrorDisplayComponent.new(error_type: "email") %>
             </div>
-            <div class="form__group">
-              <label for="#" class="form__label">Role</label>
-              <div class="radio__group-custom">
-                <div class="radio__wrapper">
-                  <%= label_tag "", class: "radio__custom-label" do %>
-                    <%= f.radio_button :role, :owner, class: "input__radio" %>
-                    <p class="input__radio-content">
-                      <span class="input__radio-name">Owner</span>
-                      <span class="input__radio-description">can manage the entire account, billings, etc</span>
-                    </p>
-                  <% end %>
-                </div>
-                <div class="radio__wrapper">
-                  <%= label_tag "", class: "radio__custom-label" do %>
-                    <%= f.radio_button :role, :member, checked: true, class: "input__radio" %>
-                    <p class="input__radio-content">
-                      <span class="input__radio-name">Member</span>
-                      <span class="input__radio-description">can manage project, changelogs, etc</span>
-                    </p>
-                  <% end %>
+            <% if current_user.headquarter_owner?(@headquarter) %>
+              <div class="form__group">
+                <label for="#" class="form__label">Role</label>
+                <div class="radio__group-custom">
+                  <div class="radio__wrapper">
+                    <%= label_tag "", class: "radio__custom-label" do %>
+                      <%= f.radio_button :role, :owner, class: "input__radio" %>
+                      <p class="input__radio-content">
+                        <span class="input__radio-name">Owner</span>
+                        <span class="input__radio-description">can manage the entire account, billings, etc</span>
+                      </p>
+                    <% end %>
+                  </div>
+                  <div class="radio__wrapper">
+                    <%= label_tag "", class: "radio__custom-label" do %>
+                      <%= f.radio_button :role, :member, checked: true, class: "input__radio" %>
+                      <p class="input__radio-content">
+                        <span class="input__radio-name">Member</span>
+                        <span class="input__radio-description">can manage project, changelogs, etc</span>
+                      </p>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% else %>
+              <p class="font--description text-sm mt-2">
+                <span class="font-semibold">Note:</span>
+                Member roles can be specified only by the owners of the HQ.
+              </p>
+            <% end %>
           </section>
         </div>
       </div>
