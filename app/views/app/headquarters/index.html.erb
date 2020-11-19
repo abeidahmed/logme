@@ -13,7 +13,11 @@
   <div class="actionable__content">
     <div class="grid__three_centered mt-4">
       <% @headquarters.each do |headquarter| %>
-        <%= render Cards::ModelComponent.new(title: headquarter.name, url: app_headquarter_url(headquarter)) do |component| %>
+        <%= render Cards::ModelComponent.new(
+            title: headquarter.name,
+            url: app_headquarter_url(headquarter),
+            pending: current_user.headquarter_invite_pending?(headquarter)
+          ) do |component| %>
           <% component.with(:body) do %>
             <p class="card__description">
               <%= headquarter.description %>

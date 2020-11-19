@@ -1,6 +1,10 @@
 <div class="grid__three_centered">
   <% projects.each do |project| %>
-    <%= render Cards::ModelComponent.new(title: project.name, url: app_project_url(project)) do |component| %>
+    <%= render Cards::ModelComponent.new(
+        title: project.name,
+        url: app_project_url(project),
+        pending: current_user.headquarter_owner?(project.headquarter) ? false : current_user.project_invite_pending?(project)
+      ) do |component| %>
       <% component.with(:body) do %>
         <p class="card__description">
           <%= project.description %>

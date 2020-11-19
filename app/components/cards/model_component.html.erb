@@ -12,22 +12,23 @@
         <%= embed_svg "dots-horizontal-solid", size: 20 %>
       </button>
     </header>
-
     <div class="card__content">
       <%= body %>
+      <% if @pending %>
+        <div class="ml-auto">
+          <%= render BadgeComponent.new(title: "Pending", label: "Invite pending", type: "warning") %>
+        </div>
+      <% end %>
     </div>
-
     <div data-target="toggle.container" class="card__option-container">
       <header class="card__header card__option-header">
         <h4 class="card__title">
           <%= @title %>
         </h4>
-
         <button data-action="click->toggle#close" class="card__option-btn" aria-label="close option">
           <%= embed_svg "x-solid", size: 20 %>
         </button>
       </header>
-
       <div class="card__content">
         <%= actions %>
       </div>
