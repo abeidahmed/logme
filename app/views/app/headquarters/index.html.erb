@@ -6,7 +6,7 @@
           <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
           New
         </button>
-        <%= render "new_form" %>
+        <%= render "form", model: [:app, Headquarter.new], modal_title: "Add new HQ" %>
       </div>
     <% end %>
   <% end %>
@@ -25,10 +25,13 @@
           <% end %>
           <% component.with(:actions) do %>
             <% if policy(headquarter).update? %>
-              <a href="#" class="card__option-item">
-                <%= embed_svg "pencil-solid", size: 20 %>
-                Edit name, description, etc
-              </a>
+              <div data-controller="modal">
+                <button data-target="modal.opener" data-action="click->modal#showModal" class="card__option-item">
+                  <%= embed_svg "pencil-solid", size: 20 %>
+                  Edit name, description, etc
+                </button>
+                <%= render "form", model: [:app, headquarter], modal_title: "Edit #{headquarter.name}" %>
+              </div>
               <a href="#" class="card__option-item">
                 <%= embed_svg "trash-solid", size: 20 %>
                 Delete or exit HQ

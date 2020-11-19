@@ -16,7 +16,7 @@
           <button data-target="modal.opener" data-action="click->modal#showModal" class="btn__icon btn__icon--right">
             <%= embed_svg "plus", size: 24 %>
           </button>
-          <%= render "app/headquarters/new_form" %>
+          <%= render "app/headquarters/form", model: [:app, Headquarter.new], modal_title: "Add new HQ" %>
         </div>
       </div>
       <ul class="hq__list">

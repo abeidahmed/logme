@@ -1,6 +1,6 @@
-<%= render Containers::ModalComponent.new(title: "Add new HQ") do |component| %>
+<%= render Containers::ModalComponent.new(title: modal_title) do |component| %>
   <% component.with(:body) do %>
-    <%= form_with model: [:app, Headquarter.new],
+    <%= form_with model: model,
       data: {
         controller: "form",
         action: "ajax:error->form#onError"
@@ -27,7 +27,7 @@
         <button type="button" data-action="click->modal#hideModal" class="btn btn--outlined">
           Cancel
         </button>
-        <%= f.submit "Create new", class: "btn btn--primary" %>
+        <%= f.submit class: "btn btn--primary" %>
       </div>
     <% end %>
   <% end %>

@@ -29,7 +29,7 @@ class App::HeadquartersController < App::ApplicationController
     authorize headquarter
 
     if headquarter.update(headquarter_params)
-      redirect_to root_url
+      redirect_back fallback_location: app_headquarters_url
     else
       render json: { errors: headquarter.errors }, status: :bad_request
     end
