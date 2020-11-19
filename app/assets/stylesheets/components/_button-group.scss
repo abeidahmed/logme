@@ -1,0 +1,38 @@
+.btn__group--col-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+
+  button:first-of-type,
+  input[type='submit']:first-of-type,
+  a:first-of-type,
+  form:first-of-type {
+    margin-top: 12px;
+  }
+
+  @include breakpoint(sm) {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    button:first-of-type,
+    input[type='submit']:first-of-type,
+    a:first-of-type,
+    form:first-of-type {
+      margin-top: 0;
+    }
+
+    > * + * {
+      margin-left: 16px;
+    }
+  }
+}
+
+.btn__group--col-reverse--fw {
+  @include breakpoint(sm) {
+    button,
+    input[type='submit'],
+    a,
+    form {
+      width: 100%;
+    }
+  }
+}

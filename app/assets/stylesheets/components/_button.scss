@@ -82,7 +82,34 @@
   }
 }
 
+.btn--danger {
+  color: #fff;
+  background-color: $red-600;
+
+  &:hover {
+    background-color: $red-500;
+  }
+
+  &:active {
+    background-color: $red-700;
+  }
+}
+
 // appearances
+.btn--danger.btn--minimal {
+  color: $red-700;
+  background-color: $red-100;
+  border-color: $red-300;
+
+  &:hover {
+    color: $red-500;
+  }
+
+  &:active {
+    background-color: $red-200;
+  }
+}
+
 .btn--outlined {
   border-color: $gray-300;
   color: $gray-700;
@@ -106,4 +133,8 @@
   // nested for specificity issues
   font-family: $font-family-graphik;
   font-weight: 500;
+}
+
+.btn--rounded {
+  border-radius: 9999px;
 }

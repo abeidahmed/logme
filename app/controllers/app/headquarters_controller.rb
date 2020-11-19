@@ -15,10 +15,20 @@ class App::HeadquartersController < App::ApplicationController
   def show
     @headquarter = Headquarter.find(params[:id])
     authorize @headquarter
+
+    redirect_to app_hq_invitation_url(membership) if invitation_pending?
   end
 
   private
   def headquarter_params
     params.require(:headquarter).permit(:name, :description)
+  end
+
+  def membership
+    current_user.find_headquarter_membership(@headquarter)
+  end
+
+  def invitation_pending?
+    current_user.headquarter_invite_pending?(@headquarter)
   end
 end

@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :projects, only: %i(show) do
       resources :project_memberships, only: %i(index)
     end
+
+    resources :hq_invitations, only: %i(show)
   end
 end
