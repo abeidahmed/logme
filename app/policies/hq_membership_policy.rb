@@ -15,6 +15,10 @@ class HqMembershipPolicy < ApplicationPolicy
     show?
   end
 
+  def roller?
+    good_owner?(object: record.headquarter)
+  end
+
   class Scope < Scope
     def resolve
       if user.has_headquarter_membership?(scope) && user.headquarter_invite_accepted?(scope)

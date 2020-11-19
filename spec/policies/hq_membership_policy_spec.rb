@@ -28,27 +28,34 @@ RSpec.describe HqMembershipPolicy, type: :policy do
   end
 
   describe "subject is hq_membership" do
-    let(:hq_membership) { create(:hq_membership, :pending) }
+    let(:hq_membership) { create(:hq_membership, :pending_owner) }
     let(:user) { hq_membership.user }
 
     subject { described_class.new(user, hq_membership) }
 
     include_examples "being_a_visitor"
 
-    context "being an invited user" do
+    context "being an owner" do
+      let(:hq_membership) { create(:hq_membership, :owner) }
+
+      it { is_expected.to permit_actions(%i(roller)) }
+    end
+
+    context "being an invited owner" do
       it { is_expected.to permit_actions(%i(show update destroy)) }
+      it { is_expected.to forbid_actions(%i(roller)) }
     end
 
     context "being an uninvited user" do
       let(:user) { create(:user) }
 
-      it { is_expected.to forbid_actions(%i(show update destroy)) }
+      it { is_expected.to forbid_actions(%i(show update destroy roller)) }
     end
 
     context "being a permanent member" do
       let(:hq_membership) { create(:hq_membership) }
 
-      it { is_expected.to forbid_actions(%i(show update destroy)) }
+      it { is_expected.to forbid_actions(%i(show update destroy roller)) }
     end
   end
 end
