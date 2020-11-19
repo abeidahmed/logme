@@ -1,4 +1,4 @@
-<%= render Containers::FocussedComponent.new(title: "Forgot your password?") do |component| %>
+<%= render Containers::FocussedComponent.new(title: "Reset your password") do |component| %>
   <% component.with(:body) do  %>
     <%= render "persistor_form", url: password_reset_url(@user.password_reset_token) %>
     <p class="font--description mt-4">

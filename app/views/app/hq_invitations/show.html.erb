@@ -6,12 +6,12 @@
       button or decline it by clicking on the decline button.
     </p>
     <div class="btn__group--col-reverse btn__group--col-reverse--fw mt-5">
-      <button class="btn btn--danger btn--minimal btn--block btn--rounded">
-        Decline invitation
-      </button>
-      <button class="btn btn--primary btn--block btn--rounded">
-        Accept invitation
-      </button>
+      <%= form_with url: app_hq_invitation_url(@hq_membership), method: :delete do |f| %>
+        <%= f.submit "Decline invitation", class: "btn btn--danger btn--minimal btn--block btn--rounded" %>
+      <% end %>
+      <%= form_with url: app_hq_invitation_url(@hq_membership), method: :patch do |f| %>
+        <%= f.submit "Accept invitation", class: "btn btn--primary btn--block btn--rounded" %>
+      <% end %>
     </div>
   <% end %>
 
