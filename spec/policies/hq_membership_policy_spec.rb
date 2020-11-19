@@ -1,27 +1,48 @@
 require "rails_helper"
 
 RSpec.describe HqMembershipPolicy, type: :policy do
-  let(:hq_membership) { create(:hq_membership, :owner) }
-  let(:user) { hq_membership.user }
-  let(:headquarter) { hq_membership.headquarter }
+  describe "subject is headquarter" do
+    let(:hq_membership) { create(:hq_membership, :owner) }
+    let(:user) { hq_membership.user }
+    let(:headquarter) { hq_membership.headquarter }
 
-  subject { described_class.new(user, headquarter) }
+    subject { described_class.new(user, headquarter) }
 
-  include_examples "being_a_visitor"
+    include_examples "being_a_visitor"
 
-  context "being an owner" do
-    it { is_expected.to permit_actions(%i(create)) }
+    context "being an owner" do
+      it { is_expected.to permit_actions(%i(create)) }
+    end
+
+    context "being a member" do
+      let(:hq_membership) { create(:hq_membership) }
+
+      it { is_expected.to permit_actions(%i(create)) }
+    end
+
+    context "being a spectator" do
+      let(:hq_membership) { create(:hq_membership, :pending_owner) }
+
+      it { is_expected.to forbid_actions(%i(create)) }
+    end
   end
 
-  context "being a member" do
-    let(:hq_membership) { create(:hq_membership) }
+  describe "subject is hq_membership" do
+    let(:hq_membership) { create(:hq_membership, :pending) }
+    let(:user) { hq_membership.user }
 
-    it { is_expected.to permit_actions(%i(create)) }
-  end
+    subject { described_class.new(user, hq_membership) }
 
-  context "being a spectator" do
-    let(:hq_membership) { create(:hq_membership, :pending_owner) }
+    include_examples "being_a_visitor"
 
-    it { is_expected.to forbid_actions(%i(create)) }
+    context "being an invited user" do
+      it { is_expected.to permit_actions(%i(show)) }
+    end
+
+    context "being an uninvited user" do
+      let(:user) { create(:user) }
+
+      it { is_expected.to forbid_actions(%i(show)) }
+    end
   end
 end

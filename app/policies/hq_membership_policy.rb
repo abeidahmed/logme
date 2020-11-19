@@ -1,4 +1,8 @@
 class HqMembershipPolicy < ApplicationPolicy
+  def show?
+    good_candidate_for_joining?
+  end
+
   def create?
     good_headquarter_member?
   end
@@ -9,5 +13,10 @@ class HqMembershipPolicy < ApplicationPolicy
         scope.hq_memberships.includes(:user)
       end
     end
+  end
+
+  private
+  def good_candidate_for_joining?
+    user.has_headquarter_membership?(record.headquarter) && user.headquarter_invite_pending?(record.headquarter)
   end
 end
