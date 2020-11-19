@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to root_url if user_signed_in?
+    redirect_to app_headquarters_url if user_signed_in?
   end
 
   def create
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if auth.authenticated?
       login(auth.user)
-      redirect_to root_url, success: "Successfully signed in"
+      redirect_to app_headquarters_url, success: "Successfully signed in"
     else
       render json: { errors: { invalid: ["credentials"] } }, status: :bad_request
     end
