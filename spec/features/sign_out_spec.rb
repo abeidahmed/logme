@@ -2,11 +2,9 @@ require "rails_helper"
 
 RSpec.feature "SignOuts", type: :feature do
   context "when the signout button is clicked" do
-    let(:hq_membership) { create(:hq_membership) }
-
     it "should sign out the user" do
-      sign_in(user: hq_membership.user)
-      visit app_headquarter_url(hq_membership.headquarter)
+      sign_in
+      visit app_headquarters_url
       within ".app__header" do
         find(".avatar__container").click
         click_link "Sign out"
