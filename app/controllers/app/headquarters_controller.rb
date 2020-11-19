@@ -1,4 +1,8 @@
 class App::HeadquartersController < App::ApplicationController
+  def index
+    @headquarters = policy_scope Headquarter
+  end
+
   def create
     headquarter = Headquarter.new(headquarter_params)
     authorize headquarter

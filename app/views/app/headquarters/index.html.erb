@@ -1,0 +1,36 @@
+<div class="container container--sm">
+  <%= render Headers::ActionableComponent.new(title: "HQs you're part of") do |component| %>
+    <% component.with(:actioner) do %>
+      <div data-controller="modal">
+        <button data-target="modal.opener" data-action="click->modal#showModal" class="btn btn__pill">
+          <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
+          New
+        </button>
+        <%= render "new_form" %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="actionable__content">
+    <div class="grid__three_centered mt-4">
+      <% @headquarters.each do |headquarter| %>
+        <%= render Cards::ModelComponent.new(title: headquarter.name, url: app_headquarter_url(headquarter)) do |component| %>
+          <% component.with(:body) do %>
+            <p class="card__description">
+              <%= headquarter.description %>
+            </p>
+          <% end %>
+          <% component.with(:actions) do %>
+            <a href="#" class="card__option-item">
+              <%= embed_svg "pencil-solid", size: 20 %>
+              Edit name, description, etc
+            </a>
+            <a href="#" class="card__option-item">
+              <%= embed_svg "trash-solid", size: 20 %>
+              Delete HQ
+            </a>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
