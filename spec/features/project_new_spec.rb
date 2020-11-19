@@ -18,4 +18,16 @@ RSpec.feature "ProjectNews", type: :feature do
       expect(page).to have_text("hello project created")
     end
   end
+
+  context "when cancel button is clicked" do
+    let(:hq_membership) { create(:hq_membership) }
+
+    it "should create the project" do
+      sign_in(user: hq_membership.user)
+      visit new_app_headquarter_project_url(hq_membership.headquarter)
+      click_link "Cancel"
+
+      expect(current_url).to eq(app_headquarter_url(hq_membership.headquarter))
+    end
+  end
 end
