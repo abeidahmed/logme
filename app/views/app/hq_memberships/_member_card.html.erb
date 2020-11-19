@@ -9,9 +9,11 @@
       <a href="mailto:<%= member.email %>" class="link link--primary link--weighted truncate">
         <%= member.email %>
       </a>
-      <p class="font--support">
-        Good vibes since <%= format_date(member.join_date) %>
-      </p>
+      <% if member.join_date %>
+        <p class="font--support">
+          Good vibes since <%= format_date(member.join_date) %>
+        </p>
+      <% end %>
     </div>
     <% unless member.invitation_accepted? %>
       <div class="ml-auto">
