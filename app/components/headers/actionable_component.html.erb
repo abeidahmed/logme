@@ -1,5 +1,11 @@
 <header class="actionable__header">
-  <h2 class="actionable__title"><%= @title %></h2>
-  <hr>
-  <%= actioner %>
+  <% if @centered %>
+    <hr>
+    <h2 class="actionable__title actionable__title--centered"><%= @title %></h2>
+    <hr>
+  <% else %>
+    <h2 class="actionable__title"><%= @title %></h2>
+    <hr>
+    <%= actioner %>
+  <% end %>
 </header>

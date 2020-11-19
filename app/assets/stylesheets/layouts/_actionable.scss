@@ -16,7 +16,7 @@
 
 .actionable__title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   color: $gray-700;
   line-height: 28px;
   padding-right: 16px;
@@ -33,4 +33,10 @@
 .actionable__footer {
   margin-top: 64px;
   text-align: center;
+}
+
+.actionable__title--centered {
+  text-align: center;
+  padding: 0 16px;
+  text-transform: uppercase;
 }
