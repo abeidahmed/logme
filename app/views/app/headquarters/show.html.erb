@@ -32,27 +32,7 @@
           <% end %>
         <% end %>
         <div class="actionable__content">
-          <div class="grid__three_centered">
-            <% @projects.each do |project| %>
-              <%= render Cards::ModelComponent.new(title: project.name, url: app_project_url(project)) do |component| %>
-                <% component.with(:body) do %>
-                  <p class="card__description">
-                    <%= project.description %>
-                  </p>
-                <% end %>
-                <% component.with(:actions) do %>
-                  <a href="#" class="card__option-item">
-                    <%= embed_svg "pencil-solid", size: 20 %>
-                    Edit name, description, etc
-                  </a>
-                  <a href="#" class="card__option-item">
-                    <%= embed_svg "trash-solid", size: 20 %>
-                    Delete project
-                  </a>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render "app/projects/project_list", projects: @projects %>
         </div>
       </section>
     </div>
