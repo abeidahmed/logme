@@ -28,10 +28,10 @@ RSpec.feature "ProjectLists", type: :feature do
       expect(page).to_not have_text("hello member 2")
     end
   end
-end
 
-def initialize_page_visit(project:, user:, headquarter:)
-  ProjectTeamAdder.new(project: project, user: user).save
-  sign_in(user: user)
-  visit app_headquarter_url(headquarter)
+  def initialize_page_visit(project:, user:, headquarter:)
+    ProjectTeamAdder.new(project: project, user: user).save
+    sign_in(user: user)
+    visit app_headquarter_url(headquarter)
+  end
 end

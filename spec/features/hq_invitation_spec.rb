@@ -31,9 +31,9 @@ RSpec.feature "HqInvitations", type: :feature do
       expect(current_url).to eq(app_headquarters_url)
     end
   end
-end
 
-def initialize_page_visit(membership)
-  sign_in(user: membership.user)
-  visit app_hq_invitation_url(membership)
+  def initialize_page_visit(membership)
+    sign_in(user: membership.user)
+    visit app_hq_invitation_url(membership)
+  end
 end

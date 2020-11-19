@@ -8,10 +8,12 @@ RSpec.feature "ProjectNews", type: :feature do
       sign_in(user: hq_membership.user)
       visit new_app_headquarter_project_url(hq_membership.headquarter)
 
-      fill_in "project[name]", with: "hello project"
-      fill_in "project[url]", with: "https://google.com"
-      fill_in "project[subdomain]", with: "helloworld"
-      click_button "new"
+      within "#project_new" do
+        fill_in "project[name]", with: "hello project"
+        fill_in "project[url]", with: "https://google.com"
+        fill_in "project[subdomain]", with: "helloworld"
+        click_button "new"
+      end
 
       expect(current_url).to eq(app_headquarter_url(hq_membership.headquarter))
       expect(page).to have_text("hello project")
