@@ -1,16 +1,24 @@
 <%= render Containers::ModalComponent.new(title: "Add new HQ") do |component| %>
   <% component.with(:body) do %>
-    <form class="form">
+    <%= form_with model: [:app, Headquarter.new],
+      data: {
+        controller: "form",
+        action: "ajax:error->form#onError"
+      },
+      html: { id: "headquarter_new", class: "form" } do |f|
+    %>
       <div class="box--restrict">
         <div class="box__content--with-footer box--overflow">
           <section>
             <div class="form__group">
-              <label for="" class="form__label">Name</label>
-              <input type="text" class="input">
+              <%= f.label :name, class: "form__label" %>
+              <%= f.text_field :name, class: "input", autocomplete: "off", required: true %>
+              <%= render Forms::ErrorDisplayComponent.new(error_type: "name") %>
             </div>
             <div class="form__group">
-              <label for="" class="form__label">Description</label>
-              <textarea rows="4" class="input"></textarea>
+              <%= f.label :description, class: "form__label" %>
+              <%= f.text_area :description, class: "input", rows: 4 %>
+              <%= render Forms::ErrorDisplayComponent.new(error_type: "description") %>
             </div>
           </section>
         </div>
@@ -19,10 +27,8 @@
         <button type="button" data-action="click->modal#hideModal" class="btn btn--outlined">
           Cancel
         </button>
-        <button class="btn btn--primary">
-          Create new
-        </button>
+        <%= f.submit "Create new", class: "btn btn--primary" %>
       </div>
-    </form>
+    <% end %>
   <% end %>
 <% end %>

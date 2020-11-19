@@ -6,7 +6,7 @@ class App::HeadquartersController < App::ApplicationController
     hq_team = HeadquarterTeamAdder.new(headquarter: headquarter, user: current_user, role: "owner")
 
     if hq_team.save
-      # redirect_to app_headquarters_url
+      redirect_to app_headquarter_url(headquarter)
     else
       render json: { errors: headquarter.errors }, status: :bad_request
     end
