@@ -10,9 +10,7 @@ RSpec.feature "ProjectLists", type: :feature do
     it "should list all the projects" do
       initialize_page_visit(project: project, user: user, headquarter: headquarter)
 
-      within ".grid__three_centered" do
-        expect(page).to have_text("hello owner")
-      end
+      expect(page).to have_text("hello owner")
     end
   end
 
@@ -26,10 +24,8 @@ RSpec.feature "ProjectLists", type: :feature do
     it "should only see the projects which the user is part of" do
       initialize_page_visit(project: project, user: user, headquarter: headquarter)
 
-      within ".grid__three_centered" do
-        expect(page).to have_text("hello member")
-        expect(page).to_not have_text("hello member 2")
-      end
+      expect(page).to have_text("hello member")
+      expect(page).to_not have_text("hello member 2")
     end
   end
 end
@@ -37,5 +33,5 @@ end
 def initialize_page_visit(project:, user:, headquarter:)
   ProjectTeamAdder.new(project: project, user: user).save
   sign_in(user: user)
-  visit app_headquarter_projects_url(headquarter)
+  visit app_headquarter_url(headquarter)
 end

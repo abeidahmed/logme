@@ -1,32 +1,60 @@
 <div class="container container--sm">
   <div class="actionable">
     <div class="actionable__top">
-      <%= render Headers::ActionableComponent.new(title: "#{@headquarter.name} HQ") %>
-      <div class="actionable__content">
-        <div class="grid__three_centered">
-          <%= render Cards::DumbComponent.new(
-              url: app_headquarter_projects_url(@headquarter),
-              title: "Projects",
-              description: "Lorem ipsum dolor sit amet.",
-              type: "project"
-            )
-          %>
-          <%= render Cards::DumbComponent.new(
-              url: app_headquarter_hq_memberships_url(@headquarter),
-              title: "HQ members",
-              description: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
-              type: "team"
-            )
-          %>
-          <%= render Cards::DumbComponent.new(
-              url: "#",
-              title: "HQ settings",
-              description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-              type: "setting"
-            )
-          %>
+      <section class="actionable__section">
+        <%= render Headers::ActionableComponent.new(title: "#{@headquarter.name} HQ") %>
+        <div class="actionable__content">
+          <div class="grid__three_centered">
+            <%= render Cards::DumbComponent.new(
+                url: app_headquarter_hq_memberships_url(@headquarter),
+                title: "HQ members",
+                description: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
+                type: "team"
+              )
+            %>
+            <%= render Cards::DumbComponent.new(
+                url: "#",
+                title: "HQ settings",
+                description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+                type: "setting"
+              )
+            %>
+          </div>
         </div>
-      </div>
+      </section>
+      <section class="actionable__section">
+        <%= render Headers::ActionableComponent.new(title: "Projects") do |component| %>
+          <% component.with(:actioner) do %>
+            <%= link_to new_app_headquarter_project_url(@headquarter), class: "btn btn__pill" do %>
+              <%= embed_svg "plus-solid", size: 20, class: "btn__pill__icon btn__pill__icon--left" %>
+              New
+            <% end %>
+          <% end %>
+        <% end %>
+        <div class="actionable__content">
+          <div class="grid__three_centered">
+            <% @projects.each do |project| %>
+              <%= render Cards::ModelComponent.new(title: project.name, url: app_project_url(project)) do |component| %>
+                <% component.with(:body) do %>
+                  <p class="card__description">
+                    <%= project.description %>
+                  </p>
+                <% end %>
+                <% component.with(:actions) do %>
+                  <a href="#" class="card__option-item">
+                    <%= embed_svg "pencil-solid", size: 20 %>
+                    Edit name, description, etc
+                  </a>
+                  <a href="#" class="card__option-item">
+                    <%= embed_svg "trash-solid", size: 20 %>
+                    Delete project
+                  </a>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </section>
     </div>
     <div class="actionable__bottom">
       <footer class="actionable__footer">

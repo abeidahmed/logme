@@ -13,7 +13,7 @@ RSpec.feature "ProjectNews", type: :feature do
       fill_in "project[subdomain]", with: "helloworld"
       click_button "new"
 
-      expect(current_url).to eq(app_headquarter_projects_url(hq_membership.headquarter))
+      expect(current_url).to eq(app_headquarter_url(hq_membership.headquarter))
       expect(page).to have_text("hello project")
       expect(page).to have_text("hello project created")
     end

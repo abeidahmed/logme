@@ -17,6 +17,7 @@ class App::HeadquartersController < App::ApplicationController
     authorize @headquarter
 
     redirect_to app_hq_invitation_url(membership) if invitation_pending?
+    @projects = policy_scope @headquarter, policy_scope_class: ProjectPolicy::Scope
   end
 
   private

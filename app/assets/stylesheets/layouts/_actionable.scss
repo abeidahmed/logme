@@ -26,6 +26,10 @@
   margin-top: 24px;
 }
 
+.actionable__section:not(:first-of-type) {
+  margin-top: 28px;
+}
+
 .actionable__footer {
   margin-top: 64px;
   text-align: center;
