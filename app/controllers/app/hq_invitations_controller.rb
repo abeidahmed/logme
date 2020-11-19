@@ -20,7 +20,7 @@ class App::HqInvitationsController < App::ApplicationController
     authorize hq_membership
 
     if hq_membership.destroy
-      redirect_to root_url, success: "You have declined the invitation"
+      redirect_to app_headquarters_url, success: "You have declined the invitation"
     end
   end
 end
