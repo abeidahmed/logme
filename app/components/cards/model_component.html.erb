@@ -8,9 +8,11 @@
     <%= link_to @url, class: "card__link" do; end %>
     <header class="card__header">
       <h4 class="card__title"><%= @title %></h4>
-      <button data-action="click->toggle#open" class="card__option-btn" aria-label="open option">
-        <%= embed_svg "dots-horizontal-solid", size: 20 %>
-      </button>
+      <% unless @pending %>
+        <button data-action="click->toggle#open" class="card__option-btn" aria-label="open option">
+          <%= embed_svg "dots-horizontal-solid", size: 20 %>
+        </button>
+      <% end %>
     </header>
     <div class="card__content">
       <%= body %>
@@ -20,18 +22,20 @@
         </div>
       <% end %>
     </div>
-    <div data-target="toggle.container" class="card__option-container">
-      <header class="card__header card__option-header">
-        <h4 class="card__title">
-          <%= @title %>
-        </h4>
-        <button data-action="click->toggle#close" class="card__option-btn" aria-label="close option">
-          <%= embed_svg "x-solid", size: 20 %>
-        </button>
-      </header>
-      <div class="card__content">
-        <%= actions %>
+    <% unless @pending %>
+      <div data-target="toggle.container" class="card__option-container">
+        <header class="card__header card__option-header">
+          <h4 class="card__title">
+            <%= @title %>
+          </h4>
+          <button data-action="click->toggle#close" class="card__option-btn" aria-label="close option">
+            <%= embed_svg "x-solid", size: 20 %>
+          </button>
+        </header>
+        <div class="card__content">
+          <%= actions %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
