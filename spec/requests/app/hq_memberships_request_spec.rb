@@ -126,4 +126,36 @@ RSpec.describe "App::HqMemberships", type: :request do
       include_examples "bad_request"
     end
   end
+
+  describe "#update" do
+    let(:headquarter) { create(:headquarter) }
+    let(:hq_membership) { create(:hq_membership, :owner, headquarter: headquarter) }
+
+    context "when the user is an owner" do
+      let(:another_membership) { create(:hq_membership, :owner, headquarter: headquarter) }
+      before do
+        begin_process_for(another_membership)
+      end
+
+      it "should demote the owner to member" do
+        expect(another_membership.reload.role).to eq("member")
+      end
+    end
+
+    context "when the user is a member" do
+      let(:another_membership) { create(:hq_membership, headquarter: headquarter) }
+      before do
+        begin_process_for(another_membership)
+      end
+
+      it "should promote the member to an owner" do
+        expect(another_membership.reload.role).to eq("owner")
+      end
+    end
+
+    def begin_process_for(user)
+      login(hq_membership.user)
+      patch app_hq_membership_url(user), params: nil
+    end
+  end
 end

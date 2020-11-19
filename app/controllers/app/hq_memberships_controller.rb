@@ -23,4 +23,15 @@ class App::HqMembershipsController < App::ApplicationController
       render json: { errors: member.errors }, status: :bad_request
     end
   end
+
+  def update
+    hq_membership = HqMembership.find(params[:id])
+    authorize hq_membership, :roller?
+
+    if hq_membership.owner?
+      hq_membership.member!
+    else
+      hq_membership.owner!
+    end
+  end
 end
