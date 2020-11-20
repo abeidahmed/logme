@@ -95,9 +95,6 @@
 .card__option-item {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  line-height: 20px;
-  color: $gray-700;
   padding: 8px 20px;
   position: relative;
   width: 100%;
@@ -111,6 +108,27 @@
     color: $gray-500;
     margin-right: 4px;
   }
+}
+
+.card__option-confirm,
+.card__option-item {
+  font-size: 14px;
+  line-height: 20px;
+  color: $gray-700;
+}
+
+.card__option-confirm--primary {
+  color: $blue-600;
+}
+
+.card__option-confirm--danger {
+  color: $red-600;
+}
+
+.card__option-confirm--primary,
+.card__option-confirm--danger {
+  font-weight: 500;
+  background: transparent;
 }
 
 .card__icon-container {
@@ -134,4 +152,8 @@
 
 .card--flexed .card__right {
   margin-left: 12px;
+}
+
+.card__option--hidden {
+  display: none;
 }

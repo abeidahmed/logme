@@ -33,15 +33,9 @@
       </a>
     <% else %>
       <% if member.headquarter_owner?(member.headquarter) %>
-        <a href="#" class="card__option-item">
-          <%= embed_svg "trending-up-solid", size: 20 %>
-          Demote to member
-        </a>
+        <%= render "app/hq_memberships/demote_action", member: member %>
       <% else %>
-        <a href="#" class="card__option-item">
-          <%= embed_svg "trending-up-solid", size: 20 %>
-          Promote to owner
-        </a>
+        <%= render "app/hq_memberships/promote_action", member: member %>
       <% end %>
       <a href="#" class="card__option-item">
         <%= embed_svg "user-remove-solid", size: 20 %>

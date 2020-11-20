@@ -30,8 +30,11 @@ class App::HqMembershipsController < App::ApplicationController
 
     if hq_membership.owner?
       hq_membership.member!
+      flash[:success] = "Demoted #{hq_membership.name} to member"
     else
       hq_membership.owner!
+      flash[:success] =  "Promoted #{hq_membership.name} to owner"
     end
+    redirect_back fallback_location: app_headquarter_hq_memberships_url(hq_membership.headquarter)
   end
 end
