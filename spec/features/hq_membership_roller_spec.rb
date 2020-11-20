@@ -18,7 +18,9 @@ RSpec.feature "HqMembershipRollers", type: :feature do
     add_users_to_headquarter(first_user: user, second_user: another_user, second_user_role: "owner")
 
     expect(last_user).to have_text(another_user.email)
-    find(".card__option-confirm--danger").click
+    within last_user do
+      page.all(:css, ".card__option-confirm--danger").first.click
+    end
 
     expect(page).to have_content("Demoted #{another_user.name} to member")
   end

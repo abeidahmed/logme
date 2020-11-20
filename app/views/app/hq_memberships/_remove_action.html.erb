@@ -1,0 +1,16 @@
+<div data-controller="card" data-action="click@window->card#onOutsideClick" data-card-toggle-class="card__option--hidden">
+  <button data-target="card.initiator" data-action="click->card#showConfirmation" class="card__option-item">
+    <%= embed_svg "trash-solid", size: 20 %>
+    Remove from HQ
+  </button>
+  <div data-target="card.confirm" class="card__option-item card__option--hidden">
+    <%= embed_svg "trash-solid", size: 20 %>
+    <%= form_with url: app_hq_membership_url(member), method: :delete do |f| %>
+      <%= f.submit "Remove", class: "card__option-confirm card__option-confirm--danger" %>
+    <% end %>
+    <span class="mx-2">|</span>
+    <button data-action="click->card#hideConfirmation" class="card__option-confirm">
+      Cancel
+    </button>
+  </div>
+</div>

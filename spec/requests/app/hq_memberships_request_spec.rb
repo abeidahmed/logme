@@ -185,5 +185,35 @@ RSpec.describe "App::HqMemberships", type: :request do
         expect { HqMembership.find(hq_membership.id) }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
+
+    context "when there is only one owner in the HQ" do
+      let(:headquarter) { create(:headquarter) }
+      let(:hq_membership) { create(:hq_membership, :owner, headquarter: headquarter) }
+      let(:another_membership) { create(:hq_membership, headquarter: headquarter) }
+      before do
+        login(hq_membership.user)
+        delete app_hq_membership_url(hq_membership)
+      end
+
+      it "should not exit the owner" do
+        expect(HqMembership.find(hq_membership.id)).to be_present
+      end
+    end
+
+    context "when there are two owners" do
+      let(:headquarter) { create(:headquarter) }
+      let(:user) { create(:user) }
+      let(:another_user) { create(:user) }
+      before do
+        membership = HeadquarterTeamAdder.new(user: user, headquarter: headquarter, role: "owner").save
+        HeadquarterTeamAdder.new(user: another_user, headquarter: headquarter, role: "owner").save
+        login(user)
+        delete app_hq_membership_url(membership)
+      end
+
+      it "should exit from the HQ" do
+        expect { HqMembership.find(user.hq_memberships.first) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
   end
 end

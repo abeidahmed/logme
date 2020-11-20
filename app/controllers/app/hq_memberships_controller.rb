@@ -42,6 +42,19 @@ class App::HqMembershipsController < App::ApplicationController
     hq_membership = HqMembership.find(params[:id])
     authorize hq_membership
 
+    owner_count = hq_membership.headquarter.hq_memberships.where(role: "owner").size
+    if owner_count == 1 && current_user.headquarter_owner?(hq_membership.headquarter) && current_user == hq_membership.user
+      redirect_back fallback_location: app_headquarter_hq_memberships_url(hq_membership.headquarter)
+      flash[:alert] = "You are the only owner in the HQ, promote someone before you leave"
+      return
+    end
+
     hq_membership.destroy
+    if current_user == hq_membership.user
+      redirect_to app_headquarters_url, success: "Exited for good reasons"
+    else
+      flash[:success] = "Removed #{hq_membership.name} for good reasons"
+      redirect_back fallback_location: app_headquarter_hq_memberships_url(hq_membership.headquarter)
+    end
   end
 end

@@ -27,20 +27,14 @@
   <% end %>
   <% component.with(:actions) do %>
     <% if current_user == member.user %>
-      <a href="#" class="card__option-item">
-        <%= embed_svg "user-remove-solid", size: 20 %>
-        Exit from HQ
-      </a>
+      <%= render "app/hq_memberships/exit_action", member: member %>
     <% else %>
       <% if member.headquarter_owner?(member.headquarter) %>
         <%= render "app/hq_memberships/demote_action", member: member %>
       <% else %>
         <%= render "app/hq_memberships/promote_action", member: member %>
       <% end %>
-      <a href="#" class="card__option-item">
-        <%= embed_svg "user-remove-solid", size: 20 %>
-        Remove from HQ
-      </a>
+      <%= render "app/hq_memberships/remove_action", member: member %>
     <% end %>
   <% end %>
 <% end %>
