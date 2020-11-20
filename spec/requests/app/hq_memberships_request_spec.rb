@@ -158,4 +158,32 @@ RSpec.describe "App::HqMemberships", type: :request do
       patch app_hq_membership_url(user), params: nil
     end
   end
+
+  describe "#destroy" do
+    context "when the deleter is the owner" do
+      let(:headquarter) { create(:headquarter) }
+      let(:hq_membership) { create(:hq_membership, :owner, headquarter: headquarter) }
+      let(:another_membership) { create(:hq_membership, headquarter: headquarter) }
+      before do
+        login(hq_membership.user)
+        delete app_hq_membership_url(another_membership)
+      end
+
+      it "should remove the user" do
+        expect { HqMembership.find(another_membership.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "when the deleter is the current_user" do
+      let(:hq_membership) { create(:hq_membership) }
+      before do
+        login(hq_membership.user)
+        delete app_hq_membership_url(hq_membership)
+      end
+
+      it "should exit from the HQ" do
+        expect { HqMembership.find(hq_membership.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end

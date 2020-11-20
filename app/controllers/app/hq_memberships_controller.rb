@@ -37,4 +37,11 @@ class App::HqMembershipsController < App::ApplicationController
     end
     redirect_back fallback_location: app_headquarter_hq_memberships_url(hq_membership.headquarter)
   end
+
+  def destroy
+    hq_membership = HqMembership.find(params[:id])
+    authorize hq_membership
+
+    hq_membership.destroy
+  end
 end
