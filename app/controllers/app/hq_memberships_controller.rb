@@ -42,8 +42,8 @@ class App::HqMembershipsController < App::ApplicationController
     hq_membership = HqMembership.find(params[:id])
     authorize hq_membership
 
-    owner_count = hq_membership.headquarter.hq_memberships.where(role: "owner").size
-    if owner_count == 1 && current_user.headquarter_owner?(hq_membership.headquarter) && current_user == hq_membership.user
+    persisted_owner = Tombstone::HqMembership.new(hq_membership: hq_membership, current_user: current_user)
+    if persisted_owner.needs_partner_owner?
       redirect_back fallback_location: app_headquarter_hq_memberships_url(hq_membership.headquarter)
       flash[:alert] = "You are the only owner in the HQ, promote someone before you leave"
       return
