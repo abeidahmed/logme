@@ -38,7 +38,14 @@ RSpec.describe HqMembershipPolicy, type: :policy do
     context "being an owner" do
       let(:hq_membership) { create(:hq_membership, :owner) }
 
-      it { is_expected.to permit_actions(%i(roller)) }
+      it { is_expected.to permit_actions(%i(destroy roller)) }
+    end
+
+    context "being the current_user" do
+      let(:hq_membership) { create(:hq_membership) }
+      let(:user) { hq_membership.user }
+
+      it { is_expected.to permit_actions(%i(destroy)) }
     end
 
     context "being an invited owner" do
@@ -53,7 +60,10 @@ RSpec.describe HqMembershipPolicy, type: :policy do
     end
 
     context "being a permanent member" do
-      let(:hq_membership) { create(:hq_membership) }
+      let(:headquarter) { create(:headquarter) }
+      let(:hq_membership) { create(:hq_membership, headquarter: headquarter) }
+      let(:another_membership) { create(:hq_membership, headquarter: headquarter) }
+      let(:user) { another_membership.user }
 
       it { is_expected.to forbid_actions(%i(show update destroy roller)) }
     end

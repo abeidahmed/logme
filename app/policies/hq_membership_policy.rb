@@ -4,7 +4,7 @@ class HqMembershipPolicy < ApplicationPolicy
   end
 
   def show?
-    good_candidate_for_joining?
+    is_current_user?
   end
 
   def update?
@@ -12,7 +12,7 @@ class HqMembershipPolicy < ApplicationPolicy
   end
 
   def destroy?
-    show?
+    good_owner?(object: record.headquarter) || show?
   end
 
   def roller?
@@ -28,7 +28,7 @@ class HqMembershipPolicy < ApplicationPolicy
   end
 
   private
-  def good_candidate_for_joining?
-    user.has_headquarter_membership?(record.headquarter) && user.headquarter_invite_pending?(record.headquarter)
+  def is_current_user?
+    user == record.user
   end
 end
